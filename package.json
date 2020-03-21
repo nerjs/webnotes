@@ -1,0 +1,14 @@
+{
+  "name": "notes_bs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "repository": "git@github.com:nerjs/notes_bs.git",
+  "author": "nerjs <karifan.stap@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@nerjs/eslint-config": "^1.0.0"
+  }
+}
