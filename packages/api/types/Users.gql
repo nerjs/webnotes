@@ -1,8 +1,19 @@
 type User {
+    id: ID!
+    name: String!
+}
+
+input UserInput {
     name: String!
 }
 
 type Query {
     user(id: ID!): User
     users: [User!]
+}
+
+type Mutation {
+    addUser(user: UserInput): User
+    editUser(id: ID!, user: UserInput!): User
+    deleteUser(id: ID!): Boolean   
 }
