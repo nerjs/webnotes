@@ -1,4 +1,11 @@
+require('./config')
 const logger = require('nlogs')(module)
-require('@nbs/db')
+const gqlApp = require('./gqlApp')
 
-logger.info('Success')
+const { API_SERVER_PORT } = process.env
+
+gqlApp.listen(Number(API_SERVER_PORT), err => {
+    if (err) return logger.error(err)
+
+    logger.info('Start API server: ', `\n\thttp://localhost:${API_SERVER_PORT}`)
+})
