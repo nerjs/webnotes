@@ -7,3 +7,4 @@ exports.connection = connection
 exports.constants = constants
 
 exports.Notes = require('./models/notes')
+exports.Users = require('./models/users')

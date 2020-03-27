@@ -5,6 +5,7 @@
     "scripts": {
         "stest": "node ./test"
     },
+    "license": "MIT",
     "dependencies": {
         "helpers-promise": "^1.2.32",
         "merge": "^1.2.1",
