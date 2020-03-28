@@ -11,6 +11,7 @@
         "@nerjs/gql": "1.0.1",
         "dotenv": "^8.2.0",
         "graphql": "^14.6.0",
+        "graphql-fields": "^2.0.3",
         "nlogs": "^1.1.0"
     },
     "devDependencies": {

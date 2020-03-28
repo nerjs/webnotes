@@ -22,15 +22,6 @@ module.exports = new Schema(
             type: ObjectId,
             ref: 'Notes',
         },
-        children: {
-            type: [
-                {
-                    type: ObjectId,
-                    ref: 'Notes',
-                },
-            ],
-            required: true,
-        },
     },
     { timestamps: true, discriminatorKey: 'kind' },
 )

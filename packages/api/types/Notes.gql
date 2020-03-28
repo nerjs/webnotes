@@ -1,0 +1,40 @@
+
+type Note {
+    id: ID!
+    kind: String!
+    title: String
+    text: String
+    author: User!
+    parent: Note
+    url: String
+    img: String
+    createdAt: Date!
+    updatedAt: Date!
+}
+
+input NoteInput {
+    title: String
+    text: String
+    parent: ID
+    url: String
+    img: String
+}
+
+input NoteQueryInput {
+    parent: String
+    author: String
+    kind: String
+    skip: Int 
+    limit: Int
+}
+
+type Query {
+    note(id: ID!): Note
+    notes(query: NoteQueryInput!): [Note!]
+}
+
+type Mutation {
+    addNote(author: ID!, kind: ID!, note: NoteInput!): Note!
+    editNote(id: ID!, note: NoteInput!): Note!
+    deleteNote(id: ID!): Boolean!
+}
