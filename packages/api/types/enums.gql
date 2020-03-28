@@ -1,0 +1,7 @@
+
+# Note types
+enum Kind {
+    dir
+    text
+    link
+}

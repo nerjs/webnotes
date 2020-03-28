@@ -1,7 +1,7 @@
 
 type Note {
     id: ID!
-    kind: String!
+    kind: Kind!
     title: String
     text: String
     author: User!
@@ -34,7 +34,7 @@ type Query {
 }
 
 type Mutation {
-    addNote(author: ID!, kind: ID!, note: NoteInput!): Note!
+    addNote(author: ID!, kind: Kind!, note: NoteInput!): Note!
     editNote(id: ID!, note: NoteInput!): Note!
     deleteNote(id: ID!): Boolean!
 }
