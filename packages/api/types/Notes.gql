@@ -21,11 +21,12 @@ input NoteInput {
 }
 
 input NoteQueryInput {
-    parent: String
-    author: String
-    kind: String
+    parent: ID
+    author: ID
+    kind: Kind
     skip: Int 
     limit: Int
+    sort: SortDates
 }
 
 type Query {

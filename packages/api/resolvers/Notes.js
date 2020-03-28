@@ -1,4 +1,10 @@
 const { Notes, Users } = require('@nbs/db')
+const objectToMongoSort = require('@nbs/utils/objectToMongoSort')
+
+const noteSortFields = {
+    created: 'createdAt',
+    updated: 'updatedAt',
+}
 
 const Note = {
     author: parent => Users.findById(parent.author),
@@ -7,7 +13,8 @@ const Note = {
 
 const Query = {
     note: (_, { id }) => Notes.findById(id),
-    notes: () => Notes.find(),
+    notes: (_, { query: { skip = 0, limit = 10, sort, ...args } }) =>
+        Notes.find(args, null, { skip, limit, ...objectToMongoSort(sort, noteSortFields) }),
 }
 
 const Mutation = {

@@ -7,6 +7,7 @@
     },
     "dependencies": {
         "@nbs/db": "1.0.0",
+        "@nbs/utils": "1.0.0",
         "@nerjs/express": "^1.0.1",
         "@nerjs/gql": "1.0.1",
         "dotenv": "^8.2.0",

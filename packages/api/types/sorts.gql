@@ -1,0 +1,8 @@
+
+# sort input. `true` - from new, `false` - from old
+input SortDates {
+    # sort by field `cteatedAt`
+    created: Boolean
+    # sort by field `updatedAt`
+    updated: Boolean 
+}
