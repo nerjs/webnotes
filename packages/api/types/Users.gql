@@ -1,6 +1,8 @@
 type User {
     id: ID!
     name: String!
+    createdAt: Date!
+    updatedAt: Date!
 }
 
 input UserInput {
