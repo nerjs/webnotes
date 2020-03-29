@@ -8,8 +8,9 @@
     "dependencies": {
         "@nbs/db": "1.0.0",
         "@nbs/utils": "1.0.0",
+        "@nbs/validate": "1.0.0",
         "@nerjs/express": "^1.0.1",
-        "@nerjs/gql": "1.0.1",
+        "@nerjs/gql": "^1.1.1",
         "dotenv": "^8.2.0",
         "graphql": "^14.6.0",
         "graphql-fields": "^2.0.3",
