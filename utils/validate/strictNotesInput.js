@@ -28,9 +28,7 @@ const schemas = {
 
 module.exports = yup.object().shape({
     kind: noteKind.required(),
-    note: core.when('kind', (kind, schema) => {
-        console.log({ schema, kind })
-
+    note: core.when('kind', kind => {
         if (!schemas[kind]) throw new Error(`Schema [kind: ${kind}] not found!`)
         return schemas[kind]
     }),

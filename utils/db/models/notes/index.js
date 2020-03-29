@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { NOTE_TYPES } = require('../../constants')
+const { NOTE_TYPES } = require('@nbs/global')
 
 const schema = require('./schema')
 const NotesClass = require('./class')

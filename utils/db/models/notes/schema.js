@@ -2,7 +2,7 @@ const {
     Schema,
     Types: { ObjectId },
 } = require('mongoose')
-const { NOTE_TYPES_ARR } = require('../../constants')
+const { NOTE_TYPES_ARR } = require('@nbs/global')
 
 module.exports = new Schema(
     {
