@@ -3,7 +3,10 @@ const createApp = require('@nerjs/express/app')
 const createServer = require('@nerjs/gql/server')
 const middlewares = require('./middlewares')
 
-const app = createApp({})
+// 'combined' | 'dev' | 'tiny' | 'short'
+const app = createApp({
+    logger: 'tiny',
+})
 
 createServer({
     app,
