@@ -3,6 +3,9 @@ const waitPort = require('wait-port')
 const merge = require('merge')
 const logger = require('nlogs')(module)
 const { sleep } = require('helpers-promise')
+const PromiseDbGqlError = require('@nerjs/errors/PromiseDbGqlError')
+
+mongoose.Promise = PromiseDbGqlError
 
 const paramsDbDefault = {
     dbProtocol: 'mongodb',
@@ -14,7 +17,7 @@ const paramsDbDefault = {
     bufferCommands: true, // default
     autoIndex: true, // default
     useNewUrlParser: true, // default
-    promiseLibrary: Promise,
+    // promiseLibrary: Promise,
     poolSize: 5, // default
     useUnifiedTopology: true, // default false
 }
