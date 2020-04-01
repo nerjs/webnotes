@@ -20,10 +20,7 @@ const Query = {
 const Mutation = {
     addNote: (_, { author, kind, note }) => Notes.create({ author, kind, ...note }),
     editNote: (_, { id, note }) => Notes.findByIdAndUpdate(id, note),
-    deleteNote: async (_, { id }) => {
-        await Notes.findByIdAndDelete(id)
-        return true
-    },
+    deleteNote: (_, { id }) => Notes.findByIdAndDelete(id),
 }
 
 module.exports = {
