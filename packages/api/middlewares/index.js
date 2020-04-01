@@ -1,4 +1,4 @@
-const onlyId = require('./onlyId')
 const validate = require('./validate')
+const helpers = require('./helpers')
 
-module.exports = [onlyId, validate]
+module.exports = [onlyId, validate, helpers]
