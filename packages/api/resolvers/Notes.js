@@ -1,4 +1,4 @@
-const { Notes, Users } = require('@nbs/db')
+const { Notes, User } = require('@nbs/db')
 const objectToMongoSort = require('@nbs/utils/objectToMongoSort')
 
 const noteSortFields = {
@@ -7,7 +7,7 @@ const noteSortFields = {
 }
 
 const Note = {
-    author: parent => Users.findById(parent.author),
+    author: parent => User.findById(parent.author),
     parent: parent => Notes.findById(parent.parent),
 }
 

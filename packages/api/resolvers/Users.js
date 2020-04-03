@@ -1,14 +1,14 @@
-const { Users } = require('@nbs/db')
+const { User } = require('@nbs/db')
 
 const Query = {
-    user: (_, { id }) => Users.findById(id),
-    users: () => Users.find(),
+    user: (_, { id }) => User.findById(id),
+    users: () => User.find(),
 }
 
 const Mutation = {
-    addUser: (_, { user }) => Users.create(user),
-    editUser: (_, { id, user }) => Users.findByIdAndUpdate(id, user, { new: true }),
-    deleteUser: (_, { id }) => Users.findByIdAndDelete(id),
+    addUser: (_, { user }) => User.create(user),
+    editUser: (_, { id, user }) => User.findByIdAndUpdate(id, user, { new: true }),
+    deleteUser: (_, { id }) => User.findByIdAndDelete(id),
 }
 
 module.exports = {

@@ -1,0 +1,16 @@
+
+
+type Auth {
+    is: Boolean!
+    user: User
+}
+
+type Query {
+    me: Auth!
+}
+
+type Mutation {
+    registration(login: String!, password: String!, confirmPassword: String!): Auth!
+    login(login: String!, password: String!): Auth
+    logout: Boolean!
+}
