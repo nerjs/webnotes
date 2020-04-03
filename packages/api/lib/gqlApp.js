@@ -1,7 +1,7 @@
 const path = require('path')
 const createApp = require('@nerjs/express/app')
 const createServer = require('@nerjs/gql/server')
-const middlewares = require('./middlewares')
+const middlewares = require('../middlewares')
 const session = require('./session')
 
 // 'combined' | 'dev' | 'tiny' | 'short'
@@ -18,8 +18,8 @@ createServer({
     app,
     path: '/gql',
     playground: true,
-    types: path.join(__dirname, 'types'),
-    resolvers: path.join(__dirname, 'resolvers'),
+    types: path.join(__dirname, '..', 'types'),
+    resolvers: path.join(__dirname, '..', 'resolvers'),
     middlewares,
     cors: {
         origin: '*',
