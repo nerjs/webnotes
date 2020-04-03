@@ -6,4 +6,4 @@ exports.connection = connection
 exports.Types = Types
 
 exports.Notes = require('./models/notes')
-exports.Users = require('./models/users')
+exports.User = require('./models/user')

@@ -5,6 +5,6 @@ const UsersClass = require('./class')
 
 schema.loadClass(UsersClass)
 
-const Users = mongoose.model('Users', schema)
+const User = mongoose.model('User', schema)
 
-module.exports = Users
+module.exports = User

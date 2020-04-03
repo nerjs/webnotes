@@ -17,6 +17,7 @@ const paramsDbDefault = {
     bufferCommands: true, // default
     autoIndex: true, // default
     useNewUrlParser: true, // default
+    useCreateIndex: true,
     // promiseLibrary: Promise,
     poolSize: 5, // default
     useUnifiedTopology: true, // default false
