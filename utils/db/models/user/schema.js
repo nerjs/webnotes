@@ -27,16 +27,18 @@ const schema = new Schema(
     { timestamps: true },
 )
 
-schema.set('toObject', {
-    virtuals: false,
-    getters: false,
-    versionKey: false,
-    transform: (doc, ret) => {
-        delete ret.__documentSalt
-        delete ret.__hashedPassword
-        ret.id = ret._id
-        return ret
-    },
-})
+;['toObject', 'toJSON'].forEach(key =>
+    schema.set(key, {
+        virtuals: false,
+        getters: false,
+        versionKey: false,
+        transform: (doc, ret) => {
+            delete ret.__documentSalt
+            delete ret.__hashedPassword
+            ret.id = ret._id
+            return ret
+        },
+    }),
+)
 
 module.exports = schema

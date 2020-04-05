@@ -14,3 +14,5 @@ exports.USER_SETTINGS = {
     MAX_PASSWORD: 50,
     MATCH_PASSWORD: /^[a-zA-Z0-9_-]*$/,
 }
+
+exports.SESSION_MAX_AGE = 1000 * 60 * 60
