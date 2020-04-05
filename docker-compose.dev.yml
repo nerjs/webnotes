@@ -17,4 +17,10 @@ services:
       - ${MONGO_EXPRESS_OUT_PORT}:8081
     env_file:
       - .env
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    restart: always
+    
   
