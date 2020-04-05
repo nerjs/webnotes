@@ -12,7 +12,7 @@ module.exports = expressSession({
     },
     resave: false,
     // // rolling: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     secret: process.env.SESSION_SECRET,
     // unset: 'keep',
     // store: expressSession.MemoryStore({}),

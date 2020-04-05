@@ -14,3 +14,7 @@ type Mutation {
     login(login: String!, password: String!): Auth
     logout: Boolean!
 }
+
+type Subscription {
+    auth: Auth!
+}

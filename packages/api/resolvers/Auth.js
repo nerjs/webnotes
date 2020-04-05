@@ -1,5 +1,7 @@
 const { User } = require('@nbs/db')
 const ValidationGqlError = require('@nerjs/errors/ValidationGqlError')
+const { filter, UPDATE_AUTH } = require('../lib/triggers')
+const pubsub = require('../lib/pubsub')
 
 const Query = {
     me: (_, args, { session }) => (session.user ? { is: true, user: session.user } : { is: false }),
@@ -18,10 +20,11 @@ const Mutation = {
 
         session.user = user.toObject()
 
-        return {
-            is: true,
-            user,
-        }
+        const auth = { is: true, user }
+
+        pubsub.publish(UPDATE_AUTH, { sessionId: session.id, auth })
+
+        return auth
     },
     login: async (_, { login, password }, { session }) => {
         const user = await User.findOne({ login })
@@ -31,20 +34,26 @@ const Mutation = {
 
         session.user = user.toObject()
 
-        return {
-            is: true,
-            user,
-        }
+        const auth = { is: true, user }
+
+        pubsub.publish(UPDATE_AUTH, { sessionId: session.id, auth })
+
+        return auth
     },
     logout: async (_, args, { session }) => {
-        await new Promise((resolve, reject) =>
-            session.destroy(err => (err ? reject(err) : resolve())),
-        )
+        const sessionId = session.id
+        session.destroy()
+        pubsub.publish(UPDATE_AUTH, { sessionId, auth: { is: false } })
         return true
     },
+}
+
+const Subscription = {
+    auth: filter(UPDATE_AUTH, ({ sessionId }, __, { session }) => sessionId === session.id),
 }
 
 module.exports = {
     Query,
     Mutation,
+    Subscription,
 }
