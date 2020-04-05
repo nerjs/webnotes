@@ -5,14 +5,24 @@ type Auth {
     user: User
 }
 
+type Session {
+    id: String!
+    userAgent: String!
+    IP: String!
+    expires: Date!
+    current: Boolean!
+}
+
 type Query {
     me: Auth!
+    mySessions: [Session!]
 }
 
 type Mutation {
     registration(login: String!, password: String!, confirmPassword: String!): Auth!
     login(login: String!, password: String!): Auth
     logout: Boolean!
+    removeSession(sessionId: String!): Boolean!
 }
 
 type Subscription {

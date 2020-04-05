@@ -10,12 +10,18 @@ const isNotAuth = (resolver, parent, args, ctx, info) => {
     throw new ForbiddenGqlError()
 }
 
+const Query = {
+    mySessions: isAuth,
+}
+
 const Mutation = {
     registration: isNotAuth,
     login: isNotAuth,
     logout: isAuth,
+    removeSession: isAuth,
 }
 
 module.exports = {
+    Query,
     Mutation,
 }

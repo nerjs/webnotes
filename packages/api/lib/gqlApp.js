@@ -15,6 +15,14 @@ const app = createApp({
 
 app.use(session)
 
+app.use((req, res, next) => {
+    req.session.IP = (req.header('x-forwarded-for') || req.connection.remoteAddress)
+        .split(',')[0]
+        .trim()
+    req.session.userAgent = req.header('user-agent')
+    next()
+})
+
 const gqlServer = createServer({
     app,
     path: '/gql',
