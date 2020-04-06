@@ -33,6 +33,7 @@ const connect = _params => {
     const paramsWaitPort = {
         host: dbHost,
         port: Number(dbPort),
+        output: 'silent',
     }
 
     const dbUri = `${dbProtocol}://${dbHost}:${Number(dbPort)}/${dbName}`
@@ -43,7 +44,7 @@ const connect = _params => {
 
         try {
             await mongoose.connect(dbUri, { dbName, ...params })
-            logger.info('MongoDb connected!')
+            logger.log('MongoDb connected!')
             return mongoose.connection
         } catch (err) {
             err.tryCount = i

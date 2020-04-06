@@ -31,10 +31,10 @@ const Mutation = {
         const user = new User({ login, password })
 
         await user.save()
-
         session.user = user.toObject()
         session.userId = user.id
 
+        logger.debug('New user', { id: user.id, login: user.login })
         const auth = { is: true, user }
 
         pubsub.publish(UPDATE_AUTH, { sessionId: session.id, auth })
@@ -49,7 +49,7 @@ const Mutation = {
 
         session.user = user.toObject()
         session.userId = user.id
-        logger.log(user.toJSON())
+        logger.debug('Login user', { id: user.id, login: user.login })
         const auth = { is: true, user }
 
         pubsub.publish(UPDATE_AUTH, { sessionId: session.id, auth })
@@ -58,6 +58,7 @@ const Mutation = {
     },
     logout: async (_, args, { session }) => {
         const sessionId = session.id
+        logger.debug('Logout user', { id: session.userId, login: session.user.login })
         session.destroy()
         pubsub.publish(UPDATE_AUTH, { sessionId, auth: { is: false } })
         return true
@@ -65,9 +66,13 @@ const Mutation = {
     removeSession: async (_, { sessionId }, { session, sessionStore }) => {
         const remoteSession = await sessionStore.get(sessionId)
         if (!remoteSession) throw new NotFoundGqlError('Session not found')
-        const { userId } = remoteSession
+        const {
+            userId,
+            user: { login },
+        } = remoteSession
         if (userId !== session.userId) throw new ForbiddenGqlError()
         await sessionStore.destroy(sessionId)
+        logger.debug('Logout session', { userId, login })
         pubsub.publish(UPDATE_AUTH, { sessionId, auth: { is: false } })
         return true
     },
