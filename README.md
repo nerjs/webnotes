@@ -1,2 +1,2 @@
 # notes_bs
-Notes, bookmarks, savd links
+Notes, bookmarks, saved links
