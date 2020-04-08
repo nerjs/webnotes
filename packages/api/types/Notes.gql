@@ -4,8 +4,9 @@ type Note {
     kind: Kind!
     title: String
     text: String
-    author: User!
+    owner: User!
     parent: Note
+    source: Note
     url: String
     img: String
     createdAt: Date!
@@ -22,7 +23,7 @@ input NoteInput {
 
 input NoteQueryInput {
     parent: ID
-    author: ID
+    owner: ID
     kind: Kind
     skip: Int 
     limit: Int

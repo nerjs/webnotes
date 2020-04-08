@@ -7,7 +7,8 @@ const noteSortFields = {
 }
 
 const Note = {
-    author: parent => User.findById(parent.author),
+    owner: parent => User.findById(parent.owner),
+    source: parent => Notes.findById(parent.source),
     parent: parent => Notes.findById(parent.parent),
 }
 

@@ -4,7 +4,7 @@ const objectId = require('./types/objectId')
 
 module.exports = yup.object().shape({
     parent: objectId,
-    author: objectId,
+    owner: objectId,
     kind: noteKind,
     skip: yup
         .number()

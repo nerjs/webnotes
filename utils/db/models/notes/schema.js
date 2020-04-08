@@ -13,12 +13,16 @@ module.exports = new Schema(
         },
         title: String,
         text: String,
-        author: {
+        owner: {
             type: ObjectId,
             required: true,
             ref: 'Users',
         },
         parent: {
+            type: ObjectId,
+            ref: 'Notes',
+        },
+        source: {
             type: ObjectId,
             ref: 'Notes',
         },

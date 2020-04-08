@@ -7,7 +7,7 @@ const core = yup.object().shape({
     title: yup.string(),
     text: yup.string(),
     parent: objectId,
-    author: objectId,
+    owner: objectId,
 })
 
 const linkSchema = core.concat(
