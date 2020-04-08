@@ -14,8 +14,8 @@ export const usersRoute = {
 }
 
 export const userRoute = {
-    path: '/_/:userId',
-    link: userId => `/_/${userId}`,
+    path: ['/_:userId', '/_/:userLogin'],
+    link: (userId, userLogin) => (userId ? `/_${userId}` : `/_/${userLogin}`),
 }
 
 export const noteRoute = {
