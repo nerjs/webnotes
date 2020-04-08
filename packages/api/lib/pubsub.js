@@ -16,7 +16,7 @@ const pubsub = new RedisPubSub({
         port: REDIS_PORT,
         retryStrategy: times => {
             // reconnect after
-            logger.dubug('reconnect', 'times:', times)
+            logger.debug('reconnect', 'times:', times)
             return Math.min(times * 50, 2000)
         },
     },
