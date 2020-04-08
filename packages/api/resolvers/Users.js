@@ -1,7 +1,7 @@
 const { User } = require('@nbs/db')
 
 const Query = {
-    user: (_, { id }) => User.findById(id),
+    user: (_, { id, login }) => (id ? User.findById(id) : User.findOne({ login })),
     users: () => User.find(),
 }
 

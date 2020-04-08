@@ -10,7 +10,7 @@ input UserInput {
 }
 
 type Query {
-    user(id: ID!): User
+    user(id: ID, login: String): User
     users: [User!]
 }
 

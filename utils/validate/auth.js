@@ -1,12 +1,14 @@
 const yup = require('yup')
 const { USER_SETTINGS } = require('@nbs/global')
 
+const loginField = yup
+    .string()
+    .min(USER_SETTINGS.MIN_LOGIN)
+    .max(USER_SETTINGS.MAX_LOGIN)
+    .matches(USER_SETTINGS.MATCH_LOGIN)
+
 const login = yup.object().shape({
-    login: yup
-        .string()
-        .min(USER_SETTINGS.MIN_LOGIN)
-        .max(USER_SETTINGS.MAX_LOGIN)
-        .matches(USER_SETTINGS.MATCH_LOGIN),
+    login: loginField,
     password: yup
         .string()
         .min(USER_SETTINGS.MIN_PASSWORD)
@@ -22,5 +24,6 @@ const registration = login.concat(
     }),
 )
 
+exports.loginField = loginField
 exports.login = login
 exports.registration = registration
