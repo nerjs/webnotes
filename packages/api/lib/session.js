@@ -27,7 +27,6 @@ exports = module.exports = expressSession({
         httpOnly: false,
         maxAge: SESSION_MAX_AGE,
         name: 'connect.sid',
-        path: '/',
     },
     resave: false,
     rolling: true,

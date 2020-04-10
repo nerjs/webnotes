@@ -31,12 +31,11 @@ const gqlServer = createServer({
     resolvers: path.join(__dirname, '..', 'resolvers'),
     middlewares,
     cors: {
-        origin: '*',
-        methods: ['GET', 'POST'],
-        credentials: 'same-origin',
+        methods: ['GET', 'POST', 'OPTIONS'],
+        credentials: true,
+        origin: (o, cb) => cb(null, o),
     },
     context: ({ req, connection }) => {
-        // if (connection) console.log('-', connection.context)
         if (connection) return connection.context
         return {
             session: req.session,
