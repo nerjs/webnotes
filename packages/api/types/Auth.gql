@@ -19,8 +19,8 @@ type Query {
 }
 
 type Mutation {
-    registration(login: String!, password: String!, confirmPassword: String!): Auth!
-    login(login: String!, password: String!): Auth
+    registration(login: String!, password: String!, confirmPassword: String!): Boolean!
+    login(login: String!, password: String!): Boolean
     logout: Boolean!
     removeSession(sessionId: String!): Boolean!
 }

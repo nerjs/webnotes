@@ -39,7 +39,7 @@ const Mutation = {
 
         pubsub.publish(UPDATE_AUTH, { sessionId: session.id, auth })
 
-        return auth
+        return true
     },
     login: async (_, { login, password }, { session }) => {
         const user = await User.findOne({ login })
@@ -54,7 +54,7 @@ const Mutation = {
 
         pubsub.publish(UPDATE_AUTH, { sessionId: session.id, auth })
 
-        return auth
+        return true
     },
     logout: async (_, args, { session }) => {
         const sessionId = session.id
