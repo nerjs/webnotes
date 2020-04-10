@@ -10,7 +10,16 @@ const {
 const urlGql = `${window.location.protocol}//${REACT_APP_API_SERVER_HOST}:${REACT_APP_API_SERVER_PORT}/${REACT_APP_API_SERVER_PATH}`
 
 const GqlDataProvider = ({ children }) => {
-    return <GqlProvider uri={urlGql}>{children}</GqlProvider>
+    return (
+        <GqlProvider
+            uri={urlGql}
+            options={{
+                credentials: 'include',
+            }}
+        >
+            {children}
+        </GqlProvider>
+    )
 }
 
 export default GqlDataProvider
