@@ -1,0 +1,53 @@
+import React, { useCallback } from 'react'
+import useAuth from 'hooks/useAuth'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardContent from '@material-ui/core/CardContent'
+import { Formik, Form } from 'formik'
+import { login as loginSchema } from '@nbs/validate/auth'
+import { TextField, SubmitField } from 'components/fields'
+import { useHistory, useLocation } from 'react-router-dom'
+import AlertError from './AlertError'
+
+const LoginEntryRoute = () => {
+    const history = useHistory()
+    const { state } = useLocation()
+    const { login } = useAuth()
+
+    const handleSubmit = useCallback(
+        async (values, { setSubmitting, setStatus, setErrors }) => {
+            setSubmitting(true)
+            try {
+                if (await login(values)) history.push(state?.referer || '/', null)
+            } catch (e) {
+                if (e.map && Object.keys(e.map).length) {
+                    setErrors(e.map)
+                } else {
+                    setStatus(e.message)
+                }
+                setSubmitting(false)
+            }
+        },
+        [login, history, state?.referer],
+    )
+
+    return (
+        <>
+            <CardHeader title="Authorization" />
+            <CardContent>
+                <Formik
+                    initialValues={{ login: '', password: '' }}
+                    onSubmit={handleSubmit}
+                    validationSchema={loginSchema}
+                >
+                    <Form>
+                        <AlertError />
+                        <TextField name="login" label="login" type="text" required />
+                        <TextField name="password" label="password" type="text" required />
+                        <SubmitField />
+                    </Form>
+                </Formik>
+            </CardContent>
+        </>
+    )
+}
+export default LoginEntryRoute
