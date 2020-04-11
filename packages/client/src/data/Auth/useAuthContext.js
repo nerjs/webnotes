@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { ME_QUERY, REGISTRATION_MUTATION, LOGIN_MUTATION, LOGOUT_MUTATION } from './queries'
+import { getValidationError } from 'helpers/filterError'
 
 export default () => {
     const [user, setUser] = useState(null)
@@ -23,7 +24,8 @@ export default () => {
                 return result?.data?.result
             } catch (err) {
                 setError(err)
-                throw err
+
+                throw getValidationError(err, 'result', 'Validation error')
             }
         },
         [meRefetch, setError],

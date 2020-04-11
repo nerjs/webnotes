@@ -22,3 +22,20 @@ export const noteRoute = {
     path: '/~/:noteId',
     link: noteId => `/~${noteId}`,
 }
+
+export const entryRoute = {
+    path: '/entry',
+    link: () => '/',
+    login: {
+        path: '/entry/login',
+        link: () => ({ pathname: '/entry/login', state: { referer: location.pathname } }),
+    },
+    registration: {
+        path: '/entry/registration',
+        link: () => ({ pathname: '/entry/registration', state: { referer: location.pathname } }),
+    },
+    logout: {
+        path: '/entry/logout',
+        link: () => ({ pathname: '/entry/logout', state: { referer: location.pathname } }),
+    },
+}

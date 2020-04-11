@@ -1,7 +1,8 @@
 import React from 'react'
+import Container from '@material-ui/core/Container'
 
 const EmptyWrapper = ({ children }) => {
-    return <div>{children}</div>
+    return <Container maxWidth="sm">{children}</Container>
 }
 
 export default EmptyWrapper
