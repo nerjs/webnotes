@@ -8,6 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import { Link } from 'react-router-dom'
 import Menu from './menu'
 import { entryRoute } from 'helpers/routes'
+import UserHeaderMenu from './userMenu'
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false)
@@ -23,7 +24,7 @@ const Header = () => {
                     <Typography style={{ flexGrow: 1 }} variant="h6">
                         News
                     </Typography>
-                    <Button color="inherit" to={entryRoute.registration.link()} component={Link}>
+                    {/* <Button color="inherit" to={entryRoute.registration.link()} component={Link}>
                         Registration
                     </Button>
                     <Button color="inherit" to={entryRoute.login.link()} component={Link}>
@@ -31,7 +32,8 @@ const Header = () => {
                     </Button>
                     <Button color="inherit" to={entryRoute.logout.link()} component={Link}>
                         Logout
-                    </Button>
+                    </Button> */}
+                    <UserHeaderMenu />
                 </Toolbar>
             </AppBar>
             <Menu open={menuOpen} onClose={switchMenu} />
