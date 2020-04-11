@@ -31,7 +31,7 @@ const gqlServer = createServer({
     resolvers: path.join(__dirname, '..', 'resolvers'),
     middlewares,
     cors: {
-        methods: ['GET', 'POST', 'OPTIONS'],
+        // methods: ['GET', 'POST', 'OPTIONS'],
         credentials: true,
         origin: (o, cb) => cb(null, o),
     },
