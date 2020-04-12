@@ -9,8 +9,11 @@ import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar'
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday'
 import { userRoute } from 'helpers/routes'
 import { timeFormat } from 'helpers/time'
+import useBody from 'hooks/useBody'
 
 const UserInfo = ({ id, login, createdAt, updatedAt }) => {
+    useBody(`${login} page`)
+
     return (
         <List>
             <ListItem>

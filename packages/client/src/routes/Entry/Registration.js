@@ -7,11 +7,13 @@ import { registration as registrationSchema } from '@nbs/validate/auth'
 import { TextField, SubmitField } from 'components/fields'
 import { useHistory, useLocation } from 'react-router-dom'
 import AlertError from './AlertError'
+import useBody from 'hooks/useBody'
 
 const RegistrationEntryRoute = () => {
     const history = useHistory()
     const { state } = useLocation()
     const { registration } = useAuth()
+    useBody({ title: 'Registration', icon: '/icons/key.png' })
 
     const handleSubmit = useCallback(
         async (values, { setSubmitting, setStatus, setErrors }) => {

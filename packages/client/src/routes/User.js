@@ -8,7 +8,7 @@ import Alert from '@material-ui/lab/Alert'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 const UserRoute = ({ match: { params } }) => {
-    const { loading, error, userId } = useUserLoginToId(params)
+    const { loading, error, userId, userLogin } = useUserLoginToId(params)
 
     return (
         <PageWrapper>

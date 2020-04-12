@@ -7,11 +7,13 @@ import { login as loginSchema } from '@nbs/validate/auth'
 import { TextField, SubmitField } from 'components/fields'
 import { useHistory, useLocation } from 'react-router-dom'
 import AlertError from './AlertError'
+import useBody from 'hooks/useBody'
 
 const LoginEntryRoute = () => {
     const history = useHistory()
     const { state } = useLocation()
     const { login } = useAuth()
+    useBody({ title: 'Login', icon: '/icons/key.png' })
 
     const handleSubmit = useCallback(
         async (values, { setSubmitting, setStatus, setErrors }) => {

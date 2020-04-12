@@ -2,14 +2,11 @@ import React, { useCallback, useState } from 'react'
 import useAuth from 'hooks/useAuth'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
-import { Formik, Form } from 'formik'
-import { login as loginSchema } from '@nbs/validate/auth'
-import { TextField, SubmitField } from 'components/fields'
 import { useHistory, useLocation, Link } from 'react-router-dom'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Button from '@material-ui/core/Button'
 import Alert from '@material-ui/lab/Alert'
-import AlertError from './AlertError'
+import useBody from 'hooks/useBody'
 
 const LogoutEntryRoute = () => {
     const [error, setError] = useState(null)
@@ -17,6 +14,7 @@ const LogoutEntryRoute = () => {
     const history = useHistory()
     const { state } = useLocation()
     const { logout } = useAuth()
+    useBody({ title: 'Logout', icon: '/icons/key.png' })
 
     const backLink = {
         pathname: state?.referer || '/',
