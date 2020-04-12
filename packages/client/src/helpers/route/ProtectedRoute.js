@@ -5,14 +5,10 @@ import useAuth from 'hooks/useAuth'
 const ProtectedRoute = ({ redirect = '/', component: Component, ...rest }) => {
     const { isAuth, loading } = useAuth()
 
-    return (
-        <Route
-            {...rest}
-            render={props => {
-                if (loading) return null
-                return !isAuth ? <Component {...props} /> : <Redirect to={redirect} />
-            }}
-        />
+    return !isAuth ? (
+        <Route {...rest} component={Component} />
+    ) : (
+        <Route {...rest} render={() => <Redirect to={redirect} />} />
     )
 }
 
