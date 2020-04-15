@@ -1,3 +1,5 @@
+const session = require('./session')
+
 exports.context = ({ req, connection }) => {
     if (connection) return connection.context
     return {
