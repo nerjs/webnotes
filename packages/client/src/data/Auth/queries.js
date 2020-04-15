@@ -31,8 +31,8 @@ export const LOGOUT_MUTATION = gql`
 `
 
 export const AUTH_SUBSCRIBE = gql`
-    subscription($timeMarker: String) {
-        auth(timeMarker: $timeMarker) {
+    subscription {
+        auth {
             is
             user {
                 id

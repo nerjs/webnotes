@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useQuery, useMutation, useSubscription, useApolloClient } from '@apollo/react-hooks'
+import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks'
 import {
     ME_QUERY,
     REGISTRATION_MUTATION,
