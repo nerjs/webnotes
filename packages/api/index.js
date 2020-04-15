@@ -1,6 +1,6 @@
 require('./lib/config')
 const logger = require('nlogs')(module)
-const gqlApp = require('./lib/gqlApp')
+const gqlApp = require('./app')
 
 const { API_SERVER_PORT } = process.env
 
