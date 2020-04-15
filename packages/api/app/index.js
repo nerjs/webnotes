@@ -4,6 +4,9 @@ const createServer = require('@nerjs/gql/server')
 const http = require('http')
 const middlewares = require('../middlewares')
 const session = require('./session')
+const { context, wsOnConnect } = require('./context')
+
+const { API_SERVER_PATH, SUBSCRIBE_SERVER_PATH } = process.env
 
 // 'combined' | 'dev' | 'tiny' | 'short'
 const app = createApp({
@@ -20,12 +23,13 @@ app.use((req, res, next) => {
         .split(',')[0]
         .trim()
     req.session.userAgent = req.header('user-agent')
+    req.currentWindow = req.header('Current-Window')
     next()
 })
 
 const gqlServer = createServer({
     app,
-    path: '/gql',
+    path: API_SERVER_PATH,
     playground: true,
     types: path.join(__dirname, '..', 'types'),
     resolvers: path.join(__dirname, '..', 'resolvers'),
@@ -35,35 +39,12 @@ const gqlServer = createServer({
         credentials: true,
         origin: (o, cb) => cb(null, o),
     },
-    context: ({ req, connection }) => {
-        if (connection) return connection.context
-        return {
-            session: req.session,
-            sessionStore: req.sessionStore,
-        }
-    },
+    context,
     subscriptions: {
-        path: '/sub',
-        onConnect: (conn, ws, ctx) => {
-            const promise = new Promise((resolve, reject) => {
-                session(ctx.request, {}, err =>
-                    err
-                        ? reject(err)
-                        : resolve({
-                              session: ctx.request.session,
-                              sessionStore: ctx.request.sessionStore,
-                          }),
-                )
-            })
-
-            return promise
-        },
-        onOperation(...args) {
-            console.log({ args })
-        },
-        onDisconnect: (...args) => {
-            // console.log('onDisconnect', args)
-        },
+        path: SUBSCRIBE_SERVER_PATH,
+        onConnect: wsOnConnect,
+        // onOperation(...args) {},
+        // onDisconnect(...args) {},
     },
 })
 
