@@ -49,7 +49,7 @@ const Mutation = {
 
         session.user = user.toObject()
         session.userId = user.id
-        logger.debug('Login user', { id: user.id, login: user.login })
+        logger.debug('Login user', { sessionId: session.id, id: user.id, login: user.login })
         const auth = { is: true, user }
 
         pubsub.publish(UPDATE_AUTH, { sessionId: session.id, auth })
@@ -58,7 +58,7 @@ const Mutation = {
     },
     logout: async (_, args, { session }) => {
         const sessionId = session.id
-        logger.debug('Logout user', { id: session.userId, login: session.user.login })
+        logger.debug('Logout user', { sessionId, id: session.userId, login: session.user.login })
         session.destroy()
         pubsub.publish(UPDATE_AUTH, { sessionId, auth: { is: false } })
         return true
