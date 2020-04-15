@@ -24,7 +24,7 @@ const LogoutEntryRoute = () => {
     const handlerLogout = useCallback(async () => {
         setLoading(true)
         try {
-            if (await logout()) history.push(backLink?.pathname || '/', null)
+            await logout(null, backLink?.pathname)
         } catch (e) {
             setError(e.message)
             setLoading(false)

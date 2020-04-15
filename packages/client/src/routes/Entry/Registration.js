@@ -19,7 +19,7 @@ const RegistrationEntryRoute = () => {
         async (values, { setSubmitting, setStatus, setErrors }) => {
             setSubmitting(true)
             try {
-                if (await registration(values)) history.push(state?.referer || '/', null)
+                await registration(values, state?.referer)
             } catch (e) {
                 if (e.map && Object.keys(e.map).length) {
                     setErrors(e.map)

@@ -10,7 +10,6 @@ import AlertError from './AlertError'
 import useBody from 'hooks/useBody'
 
 const LoginEntryRoute = () => {
-    const history = useHistory()
     const { state } = useLocation()
     const { login } = useAuth()
     useBody({ title: 'Login', icon: '/icons/key.png' })
@@ -19,7 +18,7 @@ const LoginEntryRoute = () => {
         async (values, { setSubmitting, setStatus, setErrors }) => {
             setSubmitting(true)
             try {
-                if (await login(values)) history.push(state?.referer || '/', null)
+                await login(values, state?.referer)
             } catch (e) {
                 if (e.map && Object.keys(e.map).length) {
                     setErrors(e.map)
@@ -29,7 +28,7 @@ const LoginEntryRoute = () => {
                 setSubmitting(false)
             }
         },
-        [login, history, state?.referer],
+        [login, state?.referer],
     )
 
     return (
