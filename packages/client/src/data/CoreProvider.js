@@ -2,13 +2,15 @@ import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import GqlDataProvider from './GqlDataProvider'
 import AuthProvider from './Auth'
+import ErrorHandlingProvider from './ErrorHandling'
 
 const CoreProvider = ({ children }) => {
     return (
         <GqlDataProvider>
             <AuthProvider>
-                <BrowserRouter basename="/">{children}</BrowserRouter>
+                <BrowserRouter basename="/">{children} </BrowserRouter>
             </AuthProvider>
+            <ErrorHandlingProvider />
         </GqlDataProvider>
     )
 }
