@@ -3,8 +3,13 @@ const noteKind = require('./types/noteKind')
 const objectId = require('./types/objectId')
 
 module.exports = yup.object().shape({
-    parent: objectId,
-    owner: objectId,
+    owner: objectId.required(),
+    root: yup.bool(),
+    parent: objectId.when('root', {
+        is: true,
+        then: () => objectId,
+        otherwise: () => objectId.required(),
+    }),
     kind: noteKind,
     skip: yup
         .number()

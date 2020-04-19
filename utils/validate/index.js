@@ -1,6 +1,7 @@
 exports.sortDates = require('./sortDates')
 exports.notesInput = require('./notesInput')
 exports.notesInputQuery = require('./notesInputQuery')
-exports.strictNotesInput = require('./strictNotesInput')
+exports.strictNotesInput = require('./strictNotes')
+exports.notes = require('./strictNotes/schemas')
 exports.auth = require('./auth')
 exports.user = require('./user')
