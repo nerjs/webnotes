@@ -7,6 +7,7 @@ const TextField = ({ name, type, label, required }) => {
 
     const error = meta.touched && meta.error
     const labelTxt = label ? `${label}${required ? '*' : ''}` : undefined
+
     return (
         <MUTextField
             type={type}
@@ -18,6 +19,8 @@ const TextField = ({ name, type, label, required }) => {
             margin="dense"
             error={!!error}
             helperText={error}
+            multiline
+            rowsMax={5}
         />
     )
 }
