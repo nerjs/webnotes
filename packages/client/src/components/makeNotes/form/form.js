@@ -31,7 +31,7 @@ const MakeNotesForm = ({ children }) => {
             <Form>
                 {children}
                 <br />
-                <MakeNotesSubmitBtn kind={kind} />
+                <MakeNotesSubmitBtn />
             </Form>
         </Formik>
     )

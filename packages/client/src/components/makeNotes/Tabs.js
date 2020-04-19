@@ -17,7 +17,13 @@ const MakeNotesTabs = () => {
     const { kind, changeKind, blockedKind } = useContext(MakeNotesContext)
 
     return (
-        <Tabs value={kind} indicatorColor="primary" textColor="primary" onChange={changeKind}>
+        <Tabs
+            value={kind}
+            indicatorColor="primary"
+            textColor="primary"
+            onChange={changeKind}
+            style={{ marginBottom: 10 }}
+        >
             {NOTE_TYPES_ARR.map(nt => (
                 <Tab
                     key={nt}

@@ -1,40 +1,13 @@
 import { NOTE_TYPES, NOTE_TYPES_ARR } from '@nbs/global'
 import { useState, useCallback } from 'react'
-import { notes as notesSchema } from '@nbs/validate'
-import merge from 'merge'
-
-const defaultInitialValues = {}
-
-const kindFields = {}
-
-Object.keys(notesSchema).forEach(key => {
-    kindFields[key] = []
-    Object.keys(notesSchema[key].fields).forEach(fieldKey => {
-        defaultInitialValues[fieldKey] = ''
-        kindFields[key].push(fieldKey)
-    })
-})
-
-console.log(kindFields)
-
-const useValues = ({ kind, note }) => ({
-    initialValues: useState(() => merge.recursive({}, defaultInitialValues, note))[0],
-    blockedKind: useState(
-        () =>
-            new Set(
-                kind
-                    ? kind === NOTE_TYPES.DIR
-                        ? NOTE_TYPES_ARR.filter(nt => nt !== NOTE_TYPES.DIR)
-                        : [NOTE_TYPES.DIR]
-                    : [],
-            ),
-    )[0],
-})
+import { kindFields, useValues, useActions } from './helpers'
 
 export default props => {
     const [kind, setKind] = useState(props.kind || NOTE_TYPES.DIR)
 
     const { initialValues, blockedKind } = useValues(props)
+
+    const actions = useActions(props)
 
     const changeKind = useCallback(
         (e, newKind) => {
@@ -56,5 +29,5 @@ export default props => {
         [kind, props.onSubmit],
     )
 
-    return { kind, changeKind, initialValues, blockedKind, handleSubmit }
+    return { kind, changeKind, initialValues, blockedKind, handleSubmit, actions }
 }
