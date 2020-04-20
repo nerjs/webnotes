@@ -21,8 +21,9 @@ export default props => {
     const handleSubmit = useCallback(
         values =>
             props.onSubmit(
+                kind,
                 kindFields[kind].reduce((obj, field) => {
-                    obj[field] = values[field]
+                    if (values[field]) obj[field] = values[field]
                     return obj
                 }, {}),
             ),
