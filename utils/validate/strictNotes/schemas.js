@@ -1,12 +1,9 @@
 const yup = require('yup')
 const { NOTE_TYPES } = require('@nbs/global')
-const objectId = require('../types/objectId')
 
 const core = yup.object().shape({
     title: yup.string().min(3),
     text: yup.string().min(3),
-    parent: objectId,
-    owner: objectId,
 })
 
 const dirSchema = core.concat(
