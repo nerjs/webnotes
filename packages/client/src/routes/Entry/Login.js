@@ -5,7 +5,7 @@ import CardContent from '@material-ui/core/CardContent'
 import { Formik, Form } from 'formik'
 import { login as loginSchema } from '@nbs/validate/auth'
 import { TextField, SubmitField } from 'components/fields'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import AlertError from './AlertError'
 import useBody from 'hooks/useBody'
 

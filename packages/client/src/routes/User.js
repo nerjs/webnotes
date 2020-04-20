@@ -2,13 +2,13 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import PageWrapper from 'components/wrappers/PageWrapper'
 import UserSidebar from 'components/userSeidebar'
-import NoteList from 'components/noteList'
 import useUserLoginToId from 'hooks/useUserLoginToId'
 import Alert from '@material-ui/lab/Alert'
 import LinearProgress from '@material-ui/core/LinearProgress'
+import { NotesList } from 'components/notes'
 
 const UserRoute = ({ match: { params } }) => {
-    const { loading, error, userId, userLogin } = useUserLoginToId(params)
+    const { loading, error, userId } = useUserLoginToId(params)
 
     return (
         <PageWrapper>
@@ -22,7 +22,7 @@ const UserRoute = ({ match: { params } }) => {
                         <UserSidebar userId={userId} />
                     </Grid>
                     <Grid item md={9}>
-                        <NoteList userId={userId} />
+                        <NotesList root owner={userId} />
                     </Grid>
                 </Grid>
             )}
