@@ -22,8 +22,9 @@ input NoteInput {
 }
 
 input NoteQueryInput {
-    parent: ID
     owner: ID
+    root: Boolean
+    parent: ID
     kind: Kind
     skip: Int 
     limit: Int
@@ -36,7 +37,7 @@ type Query {
 }
 
 type Mutation {
-    addNote(author: ID!, kind: Kind!, note: NoteInput!): Note!
+    addNote(kind: Kind!, parent: ID, note: NoteInput!): Note!
     editNote(id: ID!, note: NoteInput!): Note!
     deleteNote(id: ID!): Boolean!
 }

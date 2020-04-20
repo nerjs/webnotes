@@ -14,12 +14,20 @@ const Note = {
 
 const Query = {
     note: (_, { id }) => Notes.findById(id),
-    notes: (_, { query: { skip = 0, limit = 10, sort, ...args } }) =>
-        Notes.find(args, null, { skip, limit, ...objectToMongoSort(sort, noteSortFields) }),
+    notes: (_, { query: { root, owner, parent, skip = 0, limit = 10, sort } }) => {
+        const query = { owner, parent: root ? null : parent }
+        return Notes.find(query, null, { skip, limit, ...objectToMongoSort(sort, noteSortFields) })
+    },
 }
 
 const Mutation = {
-    addNote: (_, { author, kind, note }) => Notes.create({ author, kind, ...note }),
+    addNote: async (_, { kind, parent, note }, { session }) =>
+        Notes.create({
+            kind,
+            owner: session.userId,
+            parent,
+            ...note,
+        }),
     editNote: (_, { id, note }) => Notes.findByIdAndUpdate(id, note),
     deleteNote: (_, { id }) => Notes.findByIdAndDelete(id),
 }

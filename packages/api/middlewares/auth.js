@@ -19,6 +19,7 @@ const Mutation = {
     login: isNotAuth,
     logout: isAuth,
     removeSession: isAuth,
+    addNote: isAuth,
 }
 
 module.exports = {
