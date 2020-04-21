@@ -20,7 +20,7 @@ export const userRoute = {
 
 export const noteRoute = {
     path: '/~/:noteId',
-    link: noteId => `/~${noteId}`,
+    link: (noteId, state) => (state ? { pathname: `/~/${noteId}`, state } : `/~/${noteId}`),
 }
 
 export const entryRoute = {

@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid'
 
 const Panel = ({ children }) => {
     return (
-        <Paper>
+        <Paper style={{ width: '98%' }}>
             <Grid
                 container
                 justify="flex-end"
