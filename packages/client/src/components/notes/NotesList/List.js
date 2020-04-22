@@ -14,9 +14,6 @@ const GET_NOTES = gql`
             title
             text
             url
-            parent {
-                id
-            }
         }
     }
 `
@@ -32,7 +29,7 @@ const NotesListInner = ({ root, owner, parent }) => {
             {!error && data && (
                 <List>
                     {data.notes.map(note => (
-                        <ListItemInner key={note.id} {...note} />
+                        <ListItemInner key={note.id} {...note} owner={owner} />
                     ))}
                 </List>
             )}

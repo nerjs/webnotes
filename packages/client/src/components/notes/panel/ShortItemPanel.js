@@ -6,9 +6,15 @@ import { noteRoute } from 'helpers/routes'
 import Paper from '@material-ui/core/Paper'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import { Grid } from '@material-ui/core'
+import IconButton from '@material-ui/core/IconButton'
+import EditIcon from '@material-ui/icons/Edit'
+import Tooltip from '@material-ui/core/Tooltip'
+import useAuth from 'hooks/useAuth'
+import { Link } from 'react-router-dom'
 
-const ShortItemNotesPanel = ({ id, kind, children }) => {
+const ShortItemNotesPanel = ({ id, kind, owner, children }) => {
     const [show, setShow] = useState(false)
+    const { isAuth, user } = useAuth()
     const handleHover = useCallback(() => setShow(true), [setShow])
     const handleBlur = useCallback(() => setShow(false), [setShow])
 
@@ -31,6 +37,18 @@ const ShortItemNotesPanel = ({ id, kind, children }) => {
                 {show ? (
                     <>
                         <SharePanelSection path={noteRoute.link(id)} />
+                        {isAuth && user && user.id === owner && (
+                            <Tooltip title="edit">
+                                <IconButton
+                                    size="small"
+                                    color="primary"
+                                    component={Link}
+                                    to={noteRoute.link(id, { edit: id })}
+                                >
+                                    <EditIcon size="small" />
+                                </IconButton>
+                            </Tooltip>
+                        )}
                     </>
                 ) : (
                     <MoreHorizIcon />

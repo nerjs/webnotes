@@ -3,9 +3,9 @@ import ShortItemNotesPanel from '../panel/ShortItemPanel'
 import { Link } from 'react-router-dom'
 import { noteRoute } from 'helpers/routes'
 
-const LinkListItem = ({ id, kind, title, text, url }) => {
+const LinkListItem = ({ id, kind, owner, title, text, url }) => {
     return (
-        <ShortItemNotesPanel kind={kind} id={id}>
+        <ShortItemNotesPanel kind={kind} id={id} owner={owner}>
             <Link style={{ textDecoration: 'none', color: '#333' }} to={noteRoute.link(id)}>
                 <div style={{ fontSize: 15, fontWeight: 600, padding: 5, paddingBottom: 0 }}>
                     {title || text || url}
