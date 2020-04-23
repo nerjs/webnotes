@@ -1,15 +1,23 @@
 import React from 'react'
 import { NOTE_TYPES } from '@nbs/global'
 import Panel from './Panel'
-import KindIconPanelSection from './sections/KindIconSection'
 import SharePanelSection from './sections/ShareSection'
 import MakePanelSection from './sections/MakeSection'
+import Breadcrumbs from './sections/Breadcrumbs'
 
-const ListNotesPanel = ({ id, owner }) => {
+const ListNotesPanel = ({ id, owner, root, title, parent, parentTitle, ownerLogin }) => {
     return (
         <Panel>
-            <KindIconPanelSection kind={NOTE_TYPES.DIR} />
-            <div style={{ width: '100%' }} />
+            <Breadcrumbs
+                root={root}
+                owner={owner}
+                ownerLogin={ownerLogin}
+                parent={parent}
+                parentTitle={parentTitle}
+                current={id}
+                currentTitle={title}
+                currentKind={NOTE_TYPES.DIR}
+            />
             <MakePanelSection kind={NOTE_TYPES.DIR} owner={owner} id={id} />
             <SharePanelSection />
         </Panel>

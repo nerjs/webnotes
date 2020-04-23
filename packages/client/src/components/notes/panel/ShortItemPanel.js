@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react'
-import Panel from './Panel'
 import KindIconPanelSection from './sections/KindIconSection'
 import SharePanelSection from './sections/ShareSection'
 import { noteRoute } from 'helpers/routes'
@@ -20,7 +19,7 @@ const ShortItemNotesPanel = ({ id, kind, owner, children }) => {
 
     return (
         <Paper
-            style={{ width: '98%', position: 'relative', margin: '5px 0' }}
+            style={{ width: '98%', position: 'relative', margin: '5px 0', overflow: 'hidden' }}
             onMouseEnter={handleHover}
             onMouseLeave={handleBlur}
         >
@@ -58,7 +57,7 @@ const ShortItemNotesPanel = ({ id, kind, owner, children }) => {
                 <Grid item style={{ padding: 5 }}>
                     <KindIconPanelSection kind={kind} />
                 </Grid>
-                <Grid item style={{ width: '100%' }}>
+                <Grid item style={{ width: '95%' }}>
                     {children}
                 </Grid>
             </Grid>

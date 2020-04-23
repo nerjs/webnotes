@@ -10,7 +10,17 @@ const TextListItem = ({ id, owner, kind, ...props }) => {
     return (
         <ShortItemNotesPanel kind={kind} id={id} owner={owner}>
             <Link style={{ textDecoration: 'none', color: '#444' }} to={noteRoute.link(id)}>
-                <div style={{ fontSize: 15, fontWeight: 600, padding: 5, paddingBottom: 0 }}>
+                <div
+                    style={{
+                        fontSize: 15,
+                        fontWeight: 600,
+                        padding: 5,
+                        paddingBottom: 0,
+                        whiteSpace: 'nowrap',
+                        width: '100%',
+                        overflow: 'hidden',
+                    }}
+                >
                     {title}
                 </div>
                 {text && <div style={{ fontSize: 14, color: '#666' }}>{text}</div>}
