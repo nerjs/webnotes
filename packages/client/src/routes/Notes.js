@@ -53,8 +53,6 @@ const NotesRoute = () => {
         <PageWrapper>
             {loading && <LinearProgress />}
             {!error && data?.note && <NoteRouteInner {...data.note} />}
-            <br />
-            <pre>{JSON.stringify({ noteId, loading, error, data }, null, 4)}</pre>
         </PageWrapper>
     )
 }
