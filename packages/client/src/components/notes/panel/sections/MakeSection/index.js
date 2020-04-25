@@ -4,7 +4,7 @@ import { NOTE_TYPES } from '@nbs/global'
 import AddPanelSection from './AddSection'
 import EditPanelSection from './EditSection'
 
-const MakePanelSection = ({ kind, id, note, owner }) => {
+const MakePanelSection = ({ kind, id, owner }) => {
     const { isAuth, user } = useAuth()
 
     if (!isAuth || !user || owner !== user?.id) return null
@@ -12,7 +12,7 @@ const MakePanelSection = ({ kind, id, note, owner }) => {
     return (
         <>
             {kind === NOTE_TYPES.DIR && <AddPanelSection owner={owner} parent={id} />}
-            {id && <EditPanelSection kind={kind} id={id} owner={owner} note={note} />}
+            {id && <EditPanelSection kind={kind} id={id} />}
         </>
     )
 }

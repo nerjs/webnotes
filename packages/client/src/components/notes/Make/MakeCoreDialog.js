@@ -25,7 +25,7 @@ const MakeCoreDialog = ({
                 onSubmit((data || {}).make)
             } catch (e) {
                 const err = ValidationClientGqlError.parseServerGqlError(e, 'make')
-                console.log({ ...err })
+
                 if (err.hasResults) {
                     Object.keys(err.map).forEach(key => {
                         err.map[key.replace(/^note\./, '')] = err.map[key]
