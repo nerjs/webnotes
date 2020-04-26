@@ -5,7 +5,7 @@ WORKDIR /app
 RUN node -v && npm -v
 
 COPY ./package.json ./package.json
-COPY ./yarn.lock ./yarn.lock
+# COPY ./yarn.lock ./yarn.lock
 COPY ./utils ./utils
 COPY ./packages/client ./packages/client
 COPY ./packages/client/.env.prod ./packages/client/.env
