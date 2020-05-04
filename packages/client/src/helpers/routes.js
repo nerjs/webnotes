@@ -28,14 +28,14 @@ export const entryRoute = {
     link: () => '/',
     login: {
         path: '/entry/login',
-        link: () => ({ pathname: '/entry/login', state: { referer: location.pathname } }),
+        link: () => ({ pathname: '/entry/login', state: { referer: window.location.pathname } }),
     },
     registration: {
         path: '/entry/registration',
-        link: () => ({ pathname: '/entry/registration', state: { referer: location.pathname } }),
+        link: () => ({ pathname: '/entry/registration', state: { referer: window.location.pathname } }),
     },
     logout: {
         path: '/entry/logout',
-        link: () => ({ pathname: '/entry/logout', state: { referer: location.pathname } }),
+        link: () => ({ pathname: '/entry/logout', state: { referer: window.location.pathname } }),
     },
 }

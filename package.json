@@ -18,6 +18,9 @@
   "repository": "git@github.com:nerjs/notes_bs.git",
   "author": "nerjs <karifan.stap@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "12"
+  },
   "dependencies": {
     "@nerjs/eslint-config": "^1.0.0"
   },

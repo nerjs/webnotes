@@ -9,7 +9,7 @@ import Crumb from './Crumb'
 import KindIconPanelSection from '../KindIconSection'
 import CurrentCrumb from './CurrentCrumb'
 
-const useStyles = makeStyles(() => ({
+const getStyles = makeStyles(() => ({
     root: { marginRight: 10, width: '100%' },
     ol: { display: 'flex', flexWrap: 'nowrap', flexDirection: 'row' },
     li: { display: 'flex', flexWrap: 'nowrap', flexDirection: 'row' },
@@ -29,7 +29,7 @@ const Breadcrumbs = ({
     if (root) return <KindIconPanelSection kind={NOTE_TYPES.DIR} />
 
     return (
-        <MuiBreadcrumbs classes={useStyles()}>
+        <MuiBreadcrumbs classes={getStyles()}>
             <UserCrumb id={owner} login={ownerLogin} />
             {parent && <Crumb kind={NOTE_TYPES.DIR} id={parent} title={parentTitle} />}
             {current && <CurrentCrumb kind={currentKind} id={current} title={currentTitle} />}
