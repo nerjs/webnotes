@@ -12,4 +12,4 @@ jobs:
 
     steps:
       - name: 'second test'
-      run: echo $(env)
+        run: echo $(env)
