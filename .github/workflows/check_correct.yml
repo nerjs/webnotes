@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Check_correct
 
 on:
   push:
@@ -21,4 +21,5 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn
+    - run: yarn --production --silent --ignore-engines --ignore-optional --non-interactive  2> >(grep -v warning 1>&2)
+    - run: yarn lint
