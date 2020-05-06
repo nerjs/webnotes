@@ -21,3 +21,7 @@ WORKDIR /app
 COPY --from=0 /app/packages/client/build /usr/share/nginx/html
 
 EXPOSE 80
+
+VOLUME [ "/var/log/client_nginx" ]
+
+CMD ["nginx", "-g", "daemon off; error_log /var/log/client_nginx/error.log;"]
