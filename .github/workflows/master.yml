@@ -10,20 +10,66 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:
-      - name: "Install packages"
-        run : echo "Install packages"
-    
-      - name: "Lint"
-        run : echo "Lint"
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
 
-      - name: "Build containers"
-        run : echo "Build containers"
+    steps:
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - uses: actions/checkout@v1
+
+      - name: Versions
+        run : |
+          node -v
+          npm -v
+          yarn -v
+
+      - name: "Install packages"
+        run : yarn install --production=false --non-interactive
+    
+      - name: Lint
+        run : yarn lint
+
+  check_correct_docker_build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Versions
+        run : |
+          git --version
+          docker -v 
+          docker-compose -v
+
+      - uses: actions/checkout@v1
+
+      - name: "Add env file"
+        run : cat ./configs/env/.env.development > .env
+
+      - name: build
+        run : docker-compose build
+
+      - name: chmod
+        run : chmod u+x scripts/*
+
+      - name: "Run containers"
+        run : docker-compose up -d 
+
+      - name: wait
+        run : sleep 60
+
+      - name: "Check containers"
+        run : ./scripts/check_containers.sh
+
 
   deploy:
 
     runs-on: ubuntu-latest
-    needs: [ check_correct ]
+    needs: [ check_correct, check_correct_docker_build ]
 
     steps:
       - name: "self hosted deploy"
@@ -32,14 +78,17 @@ jobs:
   build_gh_page:
 
     runs-on: ubuntu-latest
-    needs: [check_correct, deploy]
+    needs: [ deploy ]
 
     steps:
-      - name: "checkout"
+      - name: checkout
         run : echo "checkout"
 
-      - name: "pull"
+      - name: pull
         run : echo "pull"
 
-      - name: "build"
+      - name: build
         run : echo "build"
+
+      - name: publish
+        run : echo "publish"

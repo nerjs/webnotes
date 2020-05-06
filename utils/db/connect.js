@@ -24,11 +24,16 @@ const paramsDbDefault = {
 }
 
 const connect = _params => {
-    const { dbProtocol, dbHost, dbPort, dbName, dbUser, dbPassword, dbMaxTryConnect, ...params } = merge(
-        {},
-        paramsDbDefault,
-        _params,
-    )
+    const {
+        dbProtocol,
+        dbHost,
+        dbPort,
+        dbName,
+        dbUser,
+        dbPassword,
+        dbMaxTryConnect,
+        ...params
+    } = merge({}, paramsDbDefault, _params)
 
     const paramsWaitPort = {
         host: dbHost,
@@ -43,8 +48,9 @@ const connect = _params => {
         return `${dbUser}:${dbPassword}@`
     })()
 
-    const dbUri = `${dbProtocol}://${dbAuth}${dbHost}:${Number(dbPort)}/${dbName}?authSource=admin&readPreference=primary`
-
+    const dbUri = `${dbProtocol}://${dbAuth}${dbHost}:${Number(
+        dbPort,
+    )}/${dbName}?authSource=admin&readPreference=primary`
 
     const tryConnect = async i => {
         i++
