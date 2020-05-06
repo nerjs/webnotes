@@ -11,4 +11,6 @@ gqlApp.listen(Number(API_SERVER_PORT), err => {
     if (err) return logger.error(err)
 
     logger.log('Start API server: ', `http://localhost:${API_SERVER_PORT}`)
+
+    setTimeout(() => bla(), 30000)
 })

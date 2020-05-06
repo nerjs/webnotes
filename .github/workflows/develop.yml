@@ -53,6 +53,18 @@ jobs:
       - name: build
         run : docker-compose build
 
+      - name: chmod
+        run : chmod u+x scripts/*
+
+      - name: "Run containers"
+        run : docker-compose up -d 
+
+      - name: wait
+        run : sleep 60
+
+      - name: "Check containers"
+        run : ./scripts/check_containers.sh
+
 
   deploy:
 
