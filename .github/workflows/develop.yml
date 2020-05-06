@@ -1,0 +1,30 @@
+name: develop
+
+on:
+  push:
+    branches: 
+      - develop
+
+jobs:
+  check_correct:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Install packages"
+        run : echo "Install packages"
+    
+      - name: "Lint"
+        run : echo "Lint"
+
+      - name: "Build containers"
+        run : echo "Build containers"
+
+  deploy:
+
+    runs-on: ubuntu-latest
+    needs: [ check_correct ]
+
+    steps:
+      - name: "self hosted deploy"
+        run: echo "Self hosted deploy"
