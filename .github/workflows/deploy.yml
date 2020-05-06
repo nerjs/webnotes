@@ -1,4 +1,4 @@
-name: Check_correct
+name: deploy
 
 on:
   push:
@@ -6,10 +6,10 @@ on:
       - master
 
 jobs:
-  build:
-
+  deploy-master:
+    need: [build]
     runs-on: ubuntu-latest
 
     steps:
-      - name: 'first test'
+      - name: 'second test'
       run: echo $(env)
