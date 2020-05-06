@@ -22,7 +22,7 @@ jobs:
       
       - uses: actions/checkout@v1
 
-      - name: "Versions"
+      - name: Versions
         run : |
           node -v
           npm -v
@@ -31,7 +31,7 @@ jobs:
       - name: "Install packages"
         run : yarn install --production=false --non-interactive
     
-      - name: "Lint"
+      - name: Lint
         run : yarn lint
 
   check_correct_docker_build:
@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: "Versions"
+      - name: Versions
         run : |
           git --version
           docker -v 
