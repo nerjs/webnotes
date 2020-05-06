@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon ."
+        "start": "nodemon .",
+        "start:prod": "node ."
     },
     "dependencies": {
         "@nbs/db": "1.0.0",

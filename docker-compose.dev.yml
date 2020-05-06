@@ -6,7 +6,6 @@ services:
     restart: always
     volumes:
       - ./volumes_data/mongo:/data/db
-      - test_vol:/test_vol
     env_file:
       - .env
     ports:
@@ -18,14 +17,9 @@ services:
       - ${MONGO_EXPRESS_OUT_PORT}:8081
     env_file:
       - .env
-    volumes: 
-      - test_vol:/test_vol
   redis:
     image: redis:alpine
     ports:
-      - "80:6379"
+      - "6379:6379"
     restart: always
-
-volumes: 
-  test_vol:
   

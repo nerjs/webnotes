@@ -14,12 +14,16 @@ const {
     MONGODB_USERNAME,
     MONGODB_PASSWORD,
     MONGODB_DBNAME,
+    MONGODB_PROTOCOL,
     MONGODB_HOST,
     MONGODB_PORT,
 } = process.env
 
 connect({
+    dbProtocol: MONGODB_PROTOCOL || 'mongodb',
     dbHost: MONGODB_HOST,
     dbPort: MONGODB_PORT,
     dbName: MONGODB_DBNAME,
+    dbUser: MONGODB_USERNAME,
+    dbPassword: MONGODB_PASSWORD
 })
