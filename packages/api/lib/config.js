@@ -25,5 +25,5 @@ connect({
     dbPort: MONGODB_PORT,
     dbName: MONGODB_DBNAME,
     dbUser: MONGODB_USERNAME,
-    dbPassword: MONGODB_PASSWORD
+    dbPassword: MONGODB_PASSWORD,
 })

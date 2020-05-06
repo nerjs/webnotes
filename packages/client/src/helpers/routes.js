@@ -32,7 +32,10 @@ export const entryRoute = {
     },
     registration: {
         path: '/entry/registration',
-        link: () => ({ pathname: '/entry/registration', state: { referer: window.location.pathname } }),
+        link: () => ({
+            pathname: '/entry/registration',
+            state: { referer: window.location.pathname },
+        }),
     },
     logout: {
         path: '/entry/logout',
