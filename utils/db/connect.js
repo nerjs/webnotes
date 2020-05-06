@@ -24,7 +24,7 @@ const paramsDbDefault = {
 }
 
 const connect = _params => {
-    const { dbProtocol, dbHost, dbPort, dbName, dbMaxTryConnect, ...params } = merge(
+    const { dbProtocol, dbHost, dbPort, dbName, dbUser, dbPassword, dbMaxTryConnect, ...params } = merge(
         {},
         paramsDbDefault,
         _params,
@@ -36,7 +36,15 @@ const connect = _params => {
         output: 'silent',
     }
 
-    const dbUri = `${dbProtocol}://${dbHost}:${Number(dbPort)}/${dbName}`
+    const dbAuth = (() => {
+        if (!dbUser && !dbPassword) return ''
+        params.user = dbUser
+        params.pass = dbPassword
+        return `${dbUser}:${dbPassword}@`
+    })()
+
+    const dbUri = `${dbProtocol}://${dbAuth}${dbHost}:${Number(dbPort)}/${dbName}?authSource=admin&readPreference=primary`
+
 
     const tryConnect = async i => {
         i++

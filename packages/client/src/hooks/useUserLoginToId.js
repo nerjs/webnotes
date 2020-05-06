@@ -10,21 +10,22 @@ const GET_USER_ID = gql`
     }
 `
 
-const useUserLoginToId = props => {
-    if (props.userId) return props
+// const useUserLoginToId = props => {
+//     if (props.userId) return props
 
-    const { loading, error, data } = useQuery(GET_USER_ID, {
-        variables: {
-            login: props.userLogin,
-        },
-    })
+//     const { loading, error, data } = useQuery(GET_USER_ID, {
+//         variables: {
+//             login: props.userLogin,
+//         },
+//     })
 
-    return {
-        ...props,
-        loading,
-        error,
-        userId: (data && data.getUserId && data.getUserId.id) || null,
-    }
-}
+//     return {
+//         ...props,
+//         loading,
+//         error,
+//         userId: (data && data.getUserId && data.getUserId.id) || null,
+//     }
+// }
+const useUserLoginToId = props => props
 
 export default useUserLoginToId

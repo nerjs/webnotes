@@ -43,7 +43,7 @@ const EditNote = ({ id, kind, onClose, onSubmit }) => {
 
     if (loading || !data?.note)
         return (
-            <Backdrop open={open} onClick={onClose}>
+            <Backdrop open onClick={onClose}>
                 <CircularProgress color="inherit" />
             </Backdrop>
         )
