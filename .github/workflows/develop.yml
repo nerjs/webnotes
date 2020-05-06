@@ -32,7 +32,7 @@ jobs:
         run : yarn install --production=false --non-interactive
     
       - name: "Lint"
-        run :yarn lint
+        run : yarn lint
 
   check_correct_docker_build:
 
