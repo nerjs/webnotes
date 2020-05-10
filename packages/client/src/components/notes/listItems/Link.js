@@ -14,6 +14,7 @@ const LinkListItem = ({ id, kind, owner, title, text, url }) => {
             <a
                 href={url}
                 target="_blank"
+                rel="noopener"
                 style={{
                     fontSize: 12,
                     letterSpacing: 1.5,

@@ -15,7 +15,7 @@ const ADD_NOTE = gql`
 `
 
 const AddNote = ({ parent, onClose, onSubmit }) => {
-    const [addNote, { loading, error, data }] = useMutation(ADD_NOTE)
+    const [addNote /*, { loading, error, data } */] = useMutation(ADD_NOTE)
 
     const variablesFilter = useCallback(
         (kind, note) => ({

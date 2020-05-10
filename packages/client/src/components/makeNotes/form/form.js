@@ -14,7 +14,7 @@ const MakeNotesForm = ({ children }) => {
             try {
                 await handleSubmit(values)
             } catch (e) {
-                const err = ValidationClientGqlError.parseServerGqlError(e)
+                // const err = ValidationClientGqlError.parseServerGqlError(e)
                 if (e.map && Object.keys(e.map).length) {
                     setErrors(e.map)
                 }

@@ -27,7 +27,7 @@ export default props => {
                     return obj
                 }, {}),
             ),
-        [kind, props.onSubmit],
+        [kind, props?.onSubmit],
     )
 
     return { kind, changeKind, initialValues, blockedKind, handleSubmit, actions }

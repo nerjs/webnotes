@@ -20,9 +20,7 @@ export default () => {
     const [isAuth, setIsAuth] = useState(false)
     const [error, setError] = useState(null)
 
-    const { loading: meLoading, error: meError, data, refetch: meRefetch, ...fd } = useQuery(
-        ME_QUERY,
-    )
+    const { loading: meLoading, error: meError, data, refetch: meRefetch } = useQuery(ME_QUERY)
 
     const [gqlRegistration, { data: registrationData, loading: regLoading }] = useMutation(
         REGISTRATION_MUTATION,
