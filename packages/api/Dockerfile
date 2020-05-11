@@ -2,7 +2,7 @@ FROM node:12-alpine
 
 WORKDIR /app 
 
-ENV API_SERVER_PORT=3000
+ENV API_SERVER_APP_PORT=3000
 
 COPY ./package.json ./package.json
 COPY ./utils ./utils
