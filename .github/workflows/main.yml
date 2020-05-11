@@ -147,6 +147,6 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           event-type: build_notes_gh
-          repository: "nerjs/test_workflow"
+          repository: "nerjs/nerjs.github.io"
           client-payload: '{ "server_host": "${{ env.API_SERVER_HOST }}", "gql_path": "${{ env.API_SERVER_PATH }}", "subscribe_path": "${{ env.SUBSCRIBE_SERVER_PATH }}" }'
           
