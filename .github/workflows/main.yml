@@ -1,0 +1,152 @@
+name: Main
+
+on:
+  push:
+    branches: 
+			- master
+			- develop
+			
+jobs:
+	check_correct:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
+
+    steps:
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - uses: actions/checkout@v1
+
+      - name: Versions
+        run : |
+          node -v
+          npm -v
+          yarn -v
+
+      - name: "Install packages"
+        run : yarn install --production=false --audit
+    
+      - name: Lint
+        run : yarn lint
+
+  check_correct_docker_build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Versions
+        run : |
+          git --version
+          docker -v 
+          docker-compose -v
+
+      - uses: actions/checkout@v1
+
+			- name: "Add develop env file"
+				if: github.ref == 'refs/heads/develop'
+        run : cat ./configs/env/.env.develop > .env
+
+			- name: "Add master env file"
+				if: github.ref == 'refs/heads/master'
+				run : cat ./configs/env/.env.master > .env
+
+      - name: build
+        run : docker-compose build
+
+      - name: "Run containers"
+        run : docker-compose up -d 
+
+      - name: wait
+        run : sleep 60
+
+      - name: "Check containers"
+        run : sh ./scripts/check_containers.sh
+
+	deploy_develop:
+
+		runs-on: develop-server
+		if: github.ref == 'refs/heads/develop'
+		needs: [ check_correct, check_correct_docker_build ]
+
+		steps:
+
+			- uses: actions/checkout@v1
+
+			- name: deploy 
+				run : sh ./scripts/rebuild.sh ./configs/env/.env.develop
+
+			- name: wait
+				run : sleep 30
+
+			- name: "Check containers"
+				run : ./scripts/check_containers.sh
+
+
+	deploy_master:
+
+		runs-on: master-server
+		if: github.ref == 'refs/heads/master'
+		needs: [ check_correct, check_correct_docker_build ]
+
+		steps:
+
+			- uses: actions/checkout@v1
+
+			- name: deploy 
+				run : sh ./scripts/rebuild.sh ./configs/env/.env.develop
+
+			- name: wait
+				run : sleep 60
+
+			- name: "Check containers"
+				run : ./scripts/check_containers.sh
+
+			- name: Cteate artifact env
+				run : |
+					touch .env.artifact
+					cat .env | grep API_SERVER_HOST | tail -1 >> .env.artifact
+					cat .env | grep API_SERVER_PATH | tail -1 >> .env.artifact
+					cat .env | grep SUBSCRIBE_SERVER_PATH | tail -1 >> .env.artifact
+
+			- name: Upload math env
+				uses: actions/upload-artifact@v1
+				with:
+					name: mastedeploy
+					path: .env.artifact
+
+
+	deploy_gh:
+
+		runs-on: ubuntu-latest
+		if: github.ref == 'refs/heads/master'
+		needs: [ deploy_master ]
+
+		steps:
+
+			- name: Download math env
+				uses: actions/download-artifact@v1
+				with:
+					name: mastedeploy
+
+			- name: Set env
+				run : |
+					echo ::set-env name=API_SERVER_HOST::$(cat mastedeploy/.env.artifact | grep API_SERVER_HOST | cut -d "=" -f2)
+					echo ::set-env name=API_SERVER_PATH::$(cat mastedeploy/.env.artifact | grep API_SERVER_PATH | cut -d "=" -f2)
+					echo ::set-env name=SUBSCRIBE_SERVER_PATH::$(cat mastedeploy/.env.artifact | grep SUBSCRIBE_SERVER_PATH | cut -d "=" -f2)
+
+			- name: Repository Dispatch
+				uses: peter-evans/repository-dispatch@v1
+				with:
+					token: ${{ secrets.ACCESS_TOKEN }}
+					event-type: build_notes_gh
+					repository: "nerjs/test_workflow"
+					client-payload: '{ "server_host": "${{ env.API_SERVER_HOST }}", "gql_path": "${{ env.API_SERVER_PATH }}", "subscribe_path": "${{ env.SUBSCRIBE_SERVER_PATH }}" }'
+					
