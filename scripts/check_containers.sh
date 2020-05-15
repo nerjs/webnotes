@@ -10,6 +10,7 @@ if [ -z "$READY_CONTAINERS" ]; then
 fi
 
 if [ "$EXITED_CONTAINERS" ]; then
+    docker-compose logs
     exit 1
 fi
 
