@@ -1,4 +1,4 @@
-import { NOTE_TYPES } from '@nbs/global'
+import { NOTE_TYPES } from '@webnotes/global'
 import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder'
 import kindIcons from './kind'
 

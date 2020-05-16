@@ -1,5 +1,5 @@
 const yup = require('yup')
-const { NOTE_TYPES } = require('@nbs/global')
+const { NOTE_TYPES } = require('@webnotes/global')
 
 const core = yup.object().shape({
     title: yup.string().min(3),

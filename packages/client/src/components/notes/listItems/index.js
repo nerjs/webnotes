@@ -1,4 +1,4 @@
-import { NOTE_TYPES } from '@nbs/global'
+import { NOTE_TYPES } from '@webnotes/global'
 import DirListItem from './Dir'
 import TextListItem from './Text'
 import LinkListItem from './Link'

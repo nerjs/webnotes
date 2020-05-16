@@ -1,9 +1,9 @@
 {
-  "name": "@nbs/validate",
+  "name": "@webnotes/validate",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "@nbs/global": "1.0.0",
-    "yup": "^0.28.3"
+    "@webnotes/global": "1.0.0",
+    "yup": "0.28.3"
   }
 }

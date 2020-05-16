@@ -2,7 +2,7 @@ const {
     Schema,
     Types: { ObjectId },
 } = require('mongoose')
-const { NOTE_TYPES_ARR } = require('@nbs/global')
+const { NOTE_TYPES_ARR } = require('@webnotes/global')
 
 module.exports = new Schema(
     {

@@ -1,6 +1,6 @@
 require('dotenv').config()
 const fs = require('fs')
-const { connect } = require('@nbs/db')
+const { connect } = require('@webnotes/db')
 
 require.extensions['.gql'] = function(module, path) {
     const file = fs.readFileSync(path, {

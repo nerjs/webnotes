@@ -1,5 +1,5 @@
 const yup = require('yup')
-const { NOTE_TYPES } = require('@nbs/global')
+const { NOTE_TYPES } = require('@webnotes/global')
 const noteKind = require('./types/noteKind')
 const objectId = require('./types/objectId')
 

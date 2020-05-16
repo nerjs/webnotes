@@ -1,4 +1,4 @@
-import { NOTE_TYPES, NOTE_TYPES_ARR } from '@nbs/global'
+import { NOTE_TYPES, NOTE_TYPES_ARR } from '@webnotes/global'
 import { useState, useCallback } from 'react'
 import { kindFields, useValues, useActions } from './helpers'
 

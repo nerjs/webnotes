@@ -1,5 +1,5 @@
 import React from 'react'
-import { NOTE_TYPES } from '@nbs/global'
+import { NOTE_TYPES } from '@webnotes/global'
 import Panel from './Panel'
 import SharePanelSection from './sections/ShareSection'
 import MakePanelSection from './sections/MakeSection'

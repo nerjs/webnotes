@@ -1,7 +1,7 @@
 const expressSession = require('express-session')
 const MongoStore = require('connect-mongo')(expressSession)
-const { connection } = require('@nbs/db')
-const { SESSION_MAX_AGE } = require('@nbs/global')
+const { connection } = require('@webnotes/db')
+const { SESSION_MAX_AGE } = require('@webnotes/global')
 
 class ModifyMongoStore extends MongoStore {
     getSessionByUserId(userId) {
