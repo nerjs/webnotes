@@ -12,6 +12,7 @@ WORKDIR /app
 COPY ./package.json ./package.json
 COPY ./utils ./utils
 COPY ./packages/client ./packages/client
+COPY ./packages/client/.env.prod ./packages/client/.env
 RUN yarn && cd packages/client  && yarn build
 
 
