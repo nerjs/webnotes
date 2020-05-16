@@ -3,14 +3,13 @@
 READY_CONTAINERS=$(docker-compose ps -q)
 EXITED_CONTAINERS=$(docker-compose ps | grep Exit)
 
-echo $EXITED_CONTAINERS
 
 if [ -z "$READY_CONTAINERS" ]; then
     exit 1
 fi
 
+echo $EXITED_CONTAINERS
 if [ "$EXITED_CONTAINERS" ]; then
-    docker-compose logs
     exit 1
 fi
 

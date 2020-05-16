@@ -1,18 +1,13 @@
+#!/bin/bash
+
 # CORE_FILE=/.appenv
 CORE_FILE=/.appenv
 TARGET_FILE="$PWD/.env"
 
 
-cat "$PWD/$1" > $TARGET_FILE
+cat "$PWD/$1" /.appenv > $TARGET_FILE
 
 
-if [ -f "$CORE_FILE" ]; then
-    echo "" >> $TARGET_FILE
-    echo "" >> $TARGET_FILE
-    cat $CORE_FILE | while read line || [ -n "$line" ]; do 
-        echo $line >> $TARGET_FILE
-    done;
-fi;
 
 READY_CONTAINERS=$(docker-compose ps -q)
 if [ "$READY_CONTAINERS" ]; then
