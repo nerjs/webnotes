@@ -7,13 +7,11 @@
     "@material-ui/core": "4.9.13",
     "@material-ui/icons": "4.9.1",
     "@material-ui/lab": "4.0.0-alpha.52",
-    "@webnotes/validate": "1.0.0",
     "@nerjs/errors": "1.2.2",
-    "@nerjs/eslint-config": "1.0.0",
     "@nerjs/gql": "1.5.0",
     "@testing-library/jest-dom": "5.7.0",
-    "@testing-library/react": "10.0.4",
     "@testing-library/user-event": "10.1.2",
+    "@webnotes/validate": "1.0.0",
     "apollo-link": "1.2.14",
     "apollo-link-error": "1.1.13",
     "apollo-link-ws": "1.0.20",
@@ -48,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@nerjs/eslint-config": "1.0.0"
   }
 }
