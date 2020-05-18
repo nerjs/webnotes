@@ -36,6 +36,9 @@ jobs:
       - name: Lint
         run : yarn lint
 
+      - name: Tests
+        run : yarn test
+
   check_correct_docker_build:
 
     runs-on: ubuntu-latest
