@@ -7,12 +7,12 @@
         "start:prod": "node ."
     },
     "dependencies": {
-        "@webnotes/db": "1.0.0",
-        "@webnotes/utils": "1.0.0",
-        "@webnotes/validate": "1.0.0",
         "@nerjs/errors": "1.2.0",
         "@nerjs/express": "1.0.3",
         "@nerjs/gql": "1.4.1",
+        "@webnotes/db": "1.0.0",
+        "@webnotes/utils": "1.0.0",
+        "@webnotes/validate": "1.0.0",
         "connect-mongo": "3.2.0",
         "dotenv": "8.2.0",
         "express-session": "1.17.0",
