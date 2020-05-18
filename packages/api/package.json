@@ -1,5 +1,5 @@
 {
-    "name": "@nps/api",
+    "name": "@webnotes/api",
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
