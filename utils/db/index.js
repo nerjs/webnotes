@@ -1,7 +1,8 @@
 const { Types } = require('mongoose')
-const { connect, connection } = require('./connect')
+const { connect, autoConnect, connection } = require('./connect')
 
 exports.connect = connect
+exports.autoConnect = autoConnect
 exports.connection = connection
 exports.Types = Types
 

@@ -16,7 +16,7 @@ module.exports = new Schema(
         owner: {
             type: ObjectId,
             required: true,
-            ref: 'Users',
+            ref: 'User',
         },
         parent: {
             type: ObjectId,
