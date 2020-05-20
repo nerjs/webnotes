@@ -10,6 +10,7 @@ const { PAGES_SERVER_PORT, PAGES_SERVER_APP_PORT, NODE_ENV } = process.env
 const PORT = Number(PAGES_SERVER_APP_PORT || PAGES_SERVER_PORT)
 
 const app = createApp({
+    logger: NODE_ENV === 'production' ? false : 'dev',
     views: path.join(__dirname, 'views'),
 })
 

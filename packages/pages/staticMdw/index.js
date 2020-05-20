@@ -44,8 +44,6 @@ module.exports = (req, res, next) => {
                 noscript,
             }),
         )
-
-        logger.info(res.headers)
     }
 
     next()
