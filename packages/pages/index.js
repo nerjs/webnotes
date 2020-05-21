@@ -2,8 +2,8 @@ require('./config')
 const path = require('path')
 const logger = require('nlogs')(module)
 const createApp = require('@nerjs/express/app')
-const HttpError = require('@nerjs/errors/HttpError')
-const staticMdw = require('./staticMdw')
+const beforeRouterMiddlewares = require('./middlewares/beforeRouter')
+const afterRouterMiddlewares = require('./middlewares/afterRouter')
 const router = require('./routes')
 
 const { PAGES_SERVER_PORT, PAGES_SERVER_APP_PORT, NODE_ENV } = process.env
@@ -14,26 +14,11 @@ const app = createApp({
     views: path.join(__dirname, 'views'),
 })
 
-app.use((req, res, next) => {
-    res.type('html')
-    next()
-})
-
-app.use(staticMdw)
+beforeRouterMiddlewares(app)
 
 app.use(router)
 
-app.use((req, res, next) => next(new HttpError(404)))
-
-app.use((err, req, res, next) => {
-    if (err instanceof HttpError) return next(err)
-    next(new HttpError(500, err.message))
-})
-
-app.use((error, req, res, next) => {
-    res.status(error.code)
-    res.render('error', { error, canStack: NODE_ENV !== 'production' })
-})
+afterRouterMiddlewares(app)
 
 app.listen(PORT, err => {
     if (err) return logger.error(err)

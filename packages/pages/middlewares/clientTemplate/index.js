@@ -3,6 +3,8 @@ const moment = require('moment')
 const { ROUTES } = require('@webnotes/global')
 const template = require('./template')
 
+const defLM = new Date()
+
 module.exports = (req, res, next) => {
     res.locals.title = 'Webnotes'
     res.locals.head = []
@@ -35,7 +37,10 @@ module.exports = (req, res, next) => {
             After that you can return by the ${links}
         `
 
-        res.append('Last-Modified', moment(lastModified).format('ddd, D MMM YYYY HH:mm:ss Z'))
+        res.append(
+            'Last-Modified',
+            moment(lastModified || defLM).format('ddd, D MMM YYYY HH:mm:ss Z'),
+        )
 
         res.send(
             template({
