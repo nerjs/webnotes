@@ -1,5 +1,5 @@
 const yup = require('yup')
-const { USER_SETTINGS } = require('@nbs/global')
+const { USER_SETTINGS } = require('@webnotes/global')
 
 const loginField = yup
     .string()

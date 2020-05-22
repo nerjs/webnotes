@@ -4,7 +4,7 @@ import { useRouteMatch } from 'react-router-dom'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
-import { NOTE_TYPES } from '@nbs/global'
+import { NOTE_TYPES } from '@webnotes/global'
 import { NotesList, NoteItem } from 'components/notes'
 
 const GET_NOTE = gql`

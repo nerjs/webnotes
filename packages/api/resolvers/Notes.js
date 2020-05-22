@@ -1,5 +1,5 @@
-const { Notes, User } = require('@nbs/db')
-const objectToMongoSort = require('@nbs/utils/objectToMongoSort')
+const { Notes, User } = require('@webnotes/db')
+const objectToMongoSort = require('@webnotes/utils/objectToMongoSort')
 
 const noteSortFields = {
     created: 'createdAt',

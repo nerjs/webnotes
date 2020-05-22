@@ -1,6 +1,6 @@
 import React from 'react'
 import Tooltip from '@material-ui/core/Tooltip'
-import { NOTE_TYPES } from '@nbs/global'
+import { NOTE_TYPES } from '@webnotes/global'
 import kindIcons from '../../../icons/kind'
 
 const titles = {

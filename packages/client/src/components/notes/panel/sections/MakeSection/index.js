@@ -1,6 +1,6 @@
 import React from 'react'
 import useAuth from 'hooks/useAuth'
-import { NOTE_TYPES } from '@nbs/global'
+import { NOTE_TYPES } from '@webnotes/global'
 import AddPanelSection from './AddSection'
 import EditPanelSection from './EditSection'
 

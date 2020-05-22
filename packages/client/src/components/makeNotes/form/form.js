@@ -1,6 +1,6 @@
 import React, { useContext, useCallback } from 'react'
 import { Formik, Form } from 'formik'
-import { notes as notesSchema } from '@nbs/validate'
+import { notes as notesSchema } from '@webnotes/validate'
 import ValidationClientGqlError from '@nerjs/errors/ValidationClientGqlError'
 import { MakeNotesContext } from '../ctx'
 import MakeNotesSubmitBtn from './btn'

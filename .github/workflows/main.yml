@@ -36,6 +36,21 @@ jobs:
       - name: Lint
         run : yarn lint
 
+      - name: Api tests
+        run : cd ./packages/api && yarn test
+
+      - name: Client tests
+        run : cd ./packages/client && yarn test
+
+      - name: Pages tests
+        run : cd ./packages/pages && yarn test
+
+      - name: Db util tests
+        run : cd ./utils/db && yarn test
+    
+      - name: Validate util tests
+        run : cd ./utils/validate && yarn test
+
   check_correct_docker_build:
 
     runs-on: ubuntu-latest
@@ -119,7 +134,7 @@ jobs:
       - name: Upload math env
         uses: actions/upload-artifact@v1
         with:
-          name: mastedeploy
+          name: masterdeploy
           path: .env.artifact
 
 
@@ -134,19 +149,19 @@ jobs:
       - name: Download math env
         uses: actions/download-artifact@v1
         with:
-          name: mastedeploy
+          name: masterdeploy
 
       - name: Set env
         run : |
-          echo ::set-env name=API_SERVER_HOST::$(cat mastedeploy/.env.artifact | grep API_SERVER_HOST | cut -d "=" -f2)
-          echo ::set-env name=API_SERVER_PATH::$(cat mastedeploy/.env.artifact | grep API_SERVER_PATH | cut -d "=" -f2)
-          echo ::set-env name=SUBSCRIBE_SERVER_PATH::$(cat mastedeploy/.env.artifact | grep SUBSCRIBE_SERVER_PATH | cut -d "=" -f2)
+          echo ::set-env name=API_SERVER_HOST::$(cat masterdeploy/.env.artifact | grep API_SERVER_HOST | cut -d "=" -f2)
+          echo ::set-env name=API_SERVER_PATH::$(cat masterdeploy/.env.artifact | grep API_SERVER_PATH | cut -d "=" -f2)
+          echo ::set-env name=SUBSCRIBE_SERVER_PATH::$(cat masterdeploy/.env.artifact | grep SUBSCRIBE_SERVER_PATH | cut -d "=" -f2)
 
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          event-type: build_notes_gh
+          event-type: build_webnotes_gh
           repository: "nerjs/nerjs.github.io"
           client-payload: '{ "server_host": "${{ env.API_SERVER_HOST }}", "gql_path": "${{ env.API_SERVER_PATH }}", "subscribe_path": "${{ env.SUBSCRIBE_SERVER_PATH }}" }'
           

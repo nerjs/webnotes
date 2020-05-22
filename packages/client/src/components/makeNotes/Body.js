@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NOTE_TYPES } from '@nbs/global'
+import { NOTE_TYPES } from '@webnotes/global'
 import MakeDirFields from './fields/dir'
 import MakeTextFields from './fields/text'
 import MakeLinkFields from './fields/link'

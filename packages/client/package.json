@@ -1,37 +1,35 @@
 {
-  "name": "client",
+  "name": "@webnotes/client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.5",
-    "@material-ui/core": "^4.9.13",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.52",
-    "@nbs/validate": "1.0.0",
-    "@nerjs/errors": "^1.2.2",
-    "@nerjs/eslint-config": "^1.0.0",
-    "@nerjs/gql": "^1.5.0",
-    "@testing-library/jest-dom": "^5.7.0",
-    "@testing-library/react": "^10.0.4",
-    "@testing-library/user-event": "^10.1.2",
-    "apollo-link": "^1.2.14",
-    "apollo-link-error": "^1.1.13",
-    "apollo-link-ws": "^1.0.20",
-    "formik": "^2.1.4",
-    "graphql-tag": "^2.10.3",
-    "merge": "^1.2.1",
-    "moment": "^2.25.3",
-    "qs": "^6.9.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
+    "@apollo/react-hooks": "3.1.5",
+    "@material-ui/core": "4.9.13",
+    "@material-ui/icons": "4.9.1",
+    "@material-ui/lab": "4.0.0-alpha.52",
+    "@nerjs/errors": "1.2.2",
+    "@nerjs/gql": "1.5.0",
+    "@testing-library/jest-dom": "5.7.0",
+    "@testing-library/user-event": "10.1.2",
+    "@webnotes/validate": "1.0.0",
+    "apollo-link": "1.2.14",
+    "apollo-link-error": "1.1.13",
+    "apollo-link-ws": "1.0.20",
+    "formik": "2.1.4",
+    "graphql-tag": "2.10.3",
+    "merge": "1.2.1",
+    "moment": "2.25.3",
+    "qs": "6.9.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-router-dom": "5.1.2",
     "react-scripts": "3.4.1",
-    "subscriptions-transport-ws": "^0.9.16"
+    "subscriptions-transport-ws": "0.9.16"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "EXTEND_ESLINT=false react-scripts build",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -48,5 +46,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/preset-env": "7.9.6",
+    "@babel/preset-react": "7.9.4",
+    "@nerjs/eslint-config": "1.0.0",
+    "babel-jest": "26.0.1",
+    "jest": "26.0.1",
+    "react-test-renderer": "16.13.1"
   }
 }

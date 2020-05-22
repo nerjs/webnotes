@@ -1,5 +1,5 @@
 const { validateMiddleware } = require('@nerjs/gql/mdw')
-const { notesInput, notesInputQuery, strictNotesInput, auth, user } = require('@nbs/validate')
+const { notesInput, notesInputQuery, strictNotesInput, auth, user } = require('@webnotes/validate')
 
 const Query = {
     notes: validateMiddleware({ query: notesInputQuery }),

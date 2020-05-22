@@ -1,5 +1,5 @@
 const { Schema } = require('mongoose')
-const { USER_SETTINGS } = require('@nbs/global')
+const { USER_SETTINGS } = require('@webnotes/global')
 
 const schema = new Schema(
     {

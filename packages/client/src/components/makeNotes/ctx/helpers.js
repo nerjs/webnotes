@@ -1,6 +1,6 @@
-import { NOTE_TYPES, NOTE_TYPES_ARR } from '@nbs/global'
+import { NOTE_TYPES, NOTE_TYPES_ARR } from '@webnotes/global'
 import { useState } from 'react'
-import { notes as notesSchema } from '@nbs/validate'
+import { notes as notesSchema } from '@webnotes/validate'
 import merge from 'merge'
 
 const defaultInitialValues = {}

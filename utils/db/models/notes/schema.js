@@ -2,7 +2,7 @@ const {
     Schema,
     Types: { ObjectId },
 } = require('mongoose')
-const { NOTE_TYPES_ARR } = require('@nbs/global')
+const { NOTE_TYPES_ARR } = require('@webnotes/global')
 
 module.exports = new Schema(
     {
@@ -16,7 +16,7 @@ module.exports = new Schema(
         owner: {
             type: ObjectId,
             required: true,
-            ref: 'Users',
+            ref: 'User',
         },
         parent: {
             type: ObjectId,

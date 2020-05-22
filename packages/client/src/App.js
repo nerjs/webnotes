@@ -1,5 +1,5 @@
 import React from 'react'
-import HomeRoute from 'routes/Home'
+import HomeRoute from './routes/Home'
 import CoreProvider from 'data/CoreProvider'
 import { homeRoute, usersRoute, userRoute, noteRoute, entryRoute } from 'helpers/routes'
 import { Switch, Redirect } from 'react-router-dom'

@@ -1,4 +1,4 @@
-const { User } = require('@nbs/db')
+const { User } = require('@webnotes/db')
 
 const Query = {
     user: (_, { id, login }) => (id ? User.findById(id) : User.findOne({ login })),

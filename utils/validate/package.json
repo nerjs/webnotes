@@ -1,9 +1,15 @@
 {
-  "name": "@nbs/validate",
+  "name": "@webnotes/validate",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
-    "@nbs/global": "1.0.0",
-    "yup": "^0.28.3"
+    "@webnotes/global": "1.0.0",
+    "yup": "0.28.3"
+  },
+  "devDependencies": {
+    "jest": "26.0.1"
   }
 }

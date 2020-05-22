@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NOTE_TYPES_ARR } from '@nbs/global'
+import { NOTE_TYPES_ARR } from '@webnotes/global'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import { MakeNotesContext } from './ctx'

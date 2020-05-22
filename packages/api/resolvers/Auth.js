@@ -1,4 +1,4 @@
-const { User } = require('@nbs/db')
+const { User } = require('@webnotes/db')
 const ValidationGqlError = require('@nerjs/errors/ValidationGqlError')
 const ForbiddenGqlError = require('@nerjs/errors/ForbiddenGqlError')
 const NotFoundGqlError = require('@nerjs/errors/NotFoundGqlError')
