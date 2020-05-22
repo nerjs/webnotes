@@ -4,7 +4,8 @@
     "main": "index.js",
     "scripts": {
         "start": "nodemon .",
-        "start:prod": "node ."
+        "start:prod": "node .",
+        "test": "jest"
     },
     "dependencies": {
         "@nerjs/errors": "1.2.0",
@@ -24,6 +25,7 @@
         "subscriptions-transport-ws": "0.9.16"
     },
     "devDependencies": {
+        "jest": "26.0.1",
         "nodemon": "2.0.3"
     }
 }

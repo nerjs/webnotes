@@ -3,16 +3,19 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "stest": "node ./test"
+        "test": "jest"
     },
     "license": "MIT",
     "dependencies": {
-        "@webnotes/global": "1.0.0",
         "@nerjs/errors": "1.1.0",
+        "@webnotes/global": "1.0.0",
         "helpers-promise": "1.2.32",
         "merge": "1.2.1",
         "mongoose": "5.9.6",
         "nlogs": "1.1.2",
         "wait-port": "0.2.7"
+    },
+    "devDependencies": {
+        "jest": "26.0.1"
     }
 }

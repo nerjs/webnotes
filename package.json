@@ -9,8 +9,7 @@
     "docker:stop": "docker-compose -f docker-compose.dev.yml down",
     "docker:restart": "npm run docker:stop && npm run docker:start",
     "docker:reload": "npm run docker:stop && rm -rf ./volumes_data && npm run docker:build",
-    "lint": "eslint packages/* utils/*",
-    "test": "jest"
+    "lint": "eslint packages/* utils/*"
   },
   "workspaces": [
     "packages/*",
@@ -24,13 +23,5 @@
   },
   "dependencies": {
     "@nerjs/eslint-config": "1.0.0"
-  },
-  "devDependencies": {
-    "@babel/preset-env": "7.9.6",
-    "@babel/preset-react": "7.9.4",
-    "babel-jest": "26.0.1",
-    "eslint": "6.8.0",
-    "jest": "26.0.1",
-    "react-test-renderer": "16.13.1"
   }
 }

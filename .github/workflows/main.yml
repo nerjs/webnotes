@@ -36,8 +36,20 @@ jobs:
       - name: Lint
         run : yarn lint
 
-      - name: Tests
-        run : yarn test
+      - name: Api tests
+        run : cd ./packages/api && yarn test
+
+      - name: Client tests
+        run : cd ./packages/client && yarn test
+
+      - name: Pages tests
+        run : cd ./packages/pages && yarn test
+
+      - name: Db util tests
+        run : cd ./utils/db && yarn test
+    
+      - name: Validate util tests
+        run : cd ./utils/validate && yarn test
 
   check_correct_docker_build:
 
