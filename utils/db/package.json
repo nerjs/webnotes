@@ -7,7 +7,7 @@
     },
     "license": "MIT",
     "dependencies": {
-        "@nerjs/errors": "1.1.0",
+        "@nerjs/errors": "1.2.2",
         "@webnotes/global": "1.0.0",
         "helpers-promise": "1.2.32",
         "merge": "1.2.1",
