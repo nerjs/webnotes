@@ -16,7 +16,7 @@
         "@webnotes/validate": "1.0.0",
         "connect-mongo": "3.2.0",
         "dotenv": "8.2.0",
-        "express-session": "1.17.0",
+        "express-session": "1.17.1",
         "graphql": "15.0.0",
         "graphql-fields": "2.0.3",
         "graphql-redis-subscriptions": "2.2.1",
