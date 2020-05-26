@@ -10,7 +10,7 @@
     "dependencies": {
         "@nerjs/errors": "1.2.0",
         "@nerjs/express": "1.0.3",
-        "@nerjs/gql": "1.4.1",
+        "@nerjs/gql": "1.5.0",
         "@webnotes/db": "1.0.0",
         "@webnotes/utils": "1.0.0",
         "@webnotes/validate": "1.0.0",
