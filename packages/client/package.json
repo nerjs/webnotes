@@ -9,7 +9,7 @@
     "@material-ui/lab": "4.0.0-alpha.52",
     "@nerjs/errors": "1.2.2",
     "@nerjs/gql": "1.5.0",
-    "@testing-library/jest-dom": "5.7.0",
+    "@testing-library/jest-dom": "5.11.9",
     "@testing-library/user-event": "10.1.2",
     "@webnotes/validate": "1.0.0",
     "apollo-link": "1.2.14",
