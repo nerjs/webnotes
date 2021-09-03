@@ -24,13 +24,16 @@
     "react-dom": "16.13.1",
     "react-router-dom": "5.1.2",
     "react-scripts": "3.4.1",
-    "subscriptions-transport-ws": "0.9.16"
+    "subscriptions-transport-ws": "0.9.16",
+    "@snyk/protect": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "EXTEND_ESLINT=false react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "eslintConfig": {
     "extends": "@nerjs/eslint-config"
@@ -54,5 +57,6 @@
     "babel-jest": "26.0.1",
     "jest": "26.0.1",
     "react-test-renderer": "16.13.1"
-  }
+  },
+  "snyk": true
 }
