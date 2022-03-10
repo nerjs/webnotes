@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@webnotes/global": "1.0.0",
-    "yup": "0.28.3"
+    "yup": "0.30.0"
   },
   "devDependencies": {
     "jest": "26.0.1"
