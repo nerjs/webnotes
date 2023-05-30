@@ -21,7 +21,7 @@
         "graphql-fields": "2.0.3",
         "graphql-redis-subscriptions": "2.2.1",
         "graphql-subscriptions": "1.1.0",
-        "nlogs": "1.1.2",
+        "nlogs": "2.3.2",
         "subscriptions-transport-ws": "0.9.16"
     },
     "devDependencies": {
