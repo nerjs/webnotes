@@ -17,7 +17,7 @@
         "ejs": "3.1.3",
         "moment": "2.25.3",
         "needle": "2.4.1",
-        "nlogs": "1.1.2"
+        "nlogs": "2.3.2"
     },
     "devDependencies": {
         "jest": "26.0.1",
